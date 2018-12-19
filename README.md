@@ -13,9 +13,7 @@ The project spans several months -- like a true web app, you will be taking an i
 Modern web applications have three basic parts, or "layers":
 
 - Data layer (database and data-managing components of the application)
-
 - Application layer (server-side web application that handles requests from UI and contains requisite business logic)
-
 - UI layer (front-end of web app, HTML/CSS/JS)
 
 This project will be built out in three stages, mapping to each of those layers and their corresponding courses:
