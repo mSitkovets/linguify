@@ -75,6 +75,5 @@ Your app can really be anything as long as it meets requirements. What will requ
 
 #### Deliverable 1 : Pitch
 - Due Jan 18th
-- Have repo built
+- Have repo for project setup
 - Readme.md filled out as a pitch on the project
-
