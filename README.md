@@ -73,4 +73,8 @@ Your app can really be anything as long as it meets requirements. What will requ
 
 ## Timetables and Due Dates
 
-TBA!
+#### Deliverable 1 : Pitch
+- Due Jan 18th
+- Have repo built
+- Readme.md filled out as a pitch on the project
+
