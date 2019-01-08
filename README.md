@@ -45,7 +45,7 @@ Your app can really be anything as long as it meets requirements. What will requ
 #### Data layer
 
 - Main data stack must be SQL-based
-- App should use at least ten data types that are connected via one or more sets of relationships
+- App must use at least five tables, and 25 attributes total that are connected via one or more sets of relationships
 - Your repository should show some use of migrations
 - Your README must describe some consideration of performance in your schema structure. How would your schema scale if it contained many, many records?
 - Data models must be validated
