@@ -77,3 +77,13 @@ Your app can really be anything as long as it meets requirements. What will requ
 - Due Jan 18th
 - Have repo for project setup
 - Readme.md filled out as a pitch on the project
+
+#### Deliverable 2 : Data Modeling
+- Jan 30th
+- Rough model
+- Living document
+
+#### Deliverable 3: Data Layer
+- Feb 11th
+- Database schema and Rails models have been written
+- Rails models can be tested/validated
