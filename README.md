@@ -75,8 +75,11 @@ Your app can really be anything as long as it meets requirements. What will requ
 
 #### Deliverable 1 : Pitch
 - Due Jan 18th
-- Have repo for project setup
+- Have a repo for project the setup
 - Readme.md filled out as a pitch on the project
+- Pitch describes what your app will do in a short paragraph or two
+- Who would use this app? What problem does it solve? Why are you interested in this idea?
+- Mention how your app relates to the topics above. Give us a hint of what your data model might look like or descibe how you see the UI looking.
 
 #### Deliverable 2 : Data Modeling
 - Jan 30th
