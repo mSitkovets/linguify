@@ -1,0 +1,40 @@
+name: dev-degree-rails-project-msitkovets
+
+type: rails
+
+up:
+  - homebrew:
+    - openssl
+    - shopify/shopify/mysql-client:
+        or:        [mysql]
+        conflicts: [mysql-connector-c]
+    # - another_package
+  - ruby: 2.5.3
+  - bundler
+  - railgun
+  - database:
+      bootstrap: bin/rails db:create db:migrate db:schema:load
+      migrate: bin/rails db:migrate db:test:prepare
+      host: dev-degree-rails-project-msitkovets.railgun
+      user: root
+      password: ''
+      database: dev-degree-rails-project-mSitkovets_development
+
+server:
+  port: 4240
+
+commands:
+  console: bin/rails console
+  test:
+    syntax:
+      argument: file
+      optional: args...
+    run:    bin/rails test
+
+# These use fuzzy-matching, so you can (e.g.) `dev open app`
+open:
+  "My Application": https://dev-degree-rails-project-msitkovets.myshopify.io
+  #ops:
+    # - https://datadog.link
+    # - https://bugsnag.link
+    # - https://kafka.link
