@@ -2,7 +2,7 @@
 
 one:
   question: MyText
-  option_a: MyString
+  option_a: A
   option_b: MyString
   option_c: MyString
   answer: MyString
