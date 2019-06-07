@@ -5,6 +5,9 @@ class UsersController < ApplicationController
   # GET /users.json
   def index
     @users = User.all
+    @most_following_users = User.select(:username).joins("INNER JOIN friendships ON friendships.user_id = users.id").group(:username).count(:friend_id).sort_by{|username, num_friends| num_friends}.reverse
+    @most_followed_users = User.select(:username).joins("INNER JOIN friendships ON friendships.friend_id = users.id").group(:username).count(:user_id).sort_by{|username, num_friends| num_friends}.reverse
+    @most_recent_to_add_friend = User.all.joins("INNER JOIN friendships ON friendships.user_id = users.id").sort_by(&:created_at).reverse.first(5)
   end
 
   # GET /users/1

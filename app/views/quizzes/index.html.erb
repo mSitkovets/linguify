@@ -28,6 +28,29 @@
   </tbody>
 </table>
 
+<%= link_to 'New Quiz', new_quiz_path %>
+
+<h1>Number of Quizzes per Language</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Language</th>
+      <th>Number of Quizzes</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @quizzes_per_language.each do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
 
-<%= link_to 'New Quiz', new_quiz_path %>
+

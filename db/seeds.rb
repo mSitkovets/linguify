@@ -1,17 +1,22 @@
+Friendship.destroy_all
+Attempt.destroy_all
 User.destroy_all
 Quiz.destroy_all
 Question.destroy_all
 Comment.destroy_all
-Friendship.destroy_all
-Attempt.destroy_all
 
 maria = User.create(:username => 'maria707', :password => 'cracker123', :email => 'maria@gmail.com')
 jerry = User.create(:username => 'jerry123', :password => 'jyt456hh', :email => 'jerry@yahoo.ca')
 rima = User.create(:username => 'rima456', :password => 'rjelks2348', :email => 'rima@hotmail.com')
 darshil = User.create(:username => 'darshil378', :password => 'afsa3234fa', :email => 'darshil@gmail.ca')
 
-drinks_in_russian = Quiz.new(:title => 'Drink Names in Russian', :description => 'Learn how to say the names of all your favourite drinks!', :user_id => 1, :difficulty_level => 'Beginner')
-animals_in_russian = Quiz.new(:title => 'Animal Names in Russian', :description => 'Learn how to say the names of all your favourite animals!', :user_id => 1, :difficulty_level => 'Beginner')
+drinks_in_russian = Quiz.create(:title => 'Drinks in Russian', :description => 'Learn how to say the names of all your favourite drinks!', :user_id => maria.id, :difficulty_level => 'Beginner', :language_learning => 'Russian', :instruction_language => "English")
+animals_in_russian = Quiz.create(:title => 'Animals in Russian', :description => 'Learn how to say the names of all your favourite animals!', :user_id => maria.id, :difficulty_level => 'Beginner', :language_learning => 'Russian', :instruction_language => "English")
+countries_in_french = Quiz.create(:title => 'Countries in French', :description => 'Learn how to say the names of many countries in the word!', :user_id => maria.id, :difficulty_level => 'Beginner', :language_learning => 'French', :instruction_language => "English")
+foods_in_french = Quiz.create(:title => 'Foods in French', :description => 'Learn how to say the names of all your favourite foods!', :user_id => maria.id, :difficulty_level => 'Beginner', :language_learning => 'French', :instruction_language => "English")
+foods_in_korean = Quiz.create(:title => 'Foods in Korean', :description => 'Learn how to say the names of all your favourite foods!', :user_id => maria.id, :difficulty_level => 'Beginner', :language_learning => 'Korean', :instruction_language => "English")
+animals_in_korean = Quiz.create(:title => 'Animals in Korean', :description => 'Learn how to say the names of all your favourite animals!', :user_id => maria.id, :difficulty_level => 'Beginner', :language_learning => 'Korean', :instruction_language => "English")
+
 
 rus_water = Question.create(:quiz_id => 1, :question => 'вода', :option_a => 'juice', :option_b => 'milk', :option_c => 'beer', :answer => 'water')
 rus_tea = Question.create(:quiz_id => 1, :question => 'чай', :option_a => 'juice', :option_b => 'coffee', :option_c => 'milk', :answer => 'tea')
@@ -35,12 +40,6 @@ rus_camel = Question.create(:quiz_id => 2, :question => 'верблюд', :optio
 rus_rabbit = Question.create(:quiz_id => 2, :question => 'kролик', :option_a => 'dog', :option_b => 'camel', :option_c => 'bear', :answer => 'rabbit')
 rus_monkey = Question.create(:quiz_id => 2, :question => 'oбезьяна', :option_a => 'cat', :option_b => 'camel', :option_c => 'giraffe', :answer => 'monkey')
 
-
-jerry.quizzes << drinks_in_russian
-rima.quizzes << drinks_in_russian
-maria.quizzes << animals_in_russian
-darshil.quizzes << animals_in_russian
-
 drinks_in_russian.questions << rus_water
 drinks_in_russian.questions << rus_tea
 drinks_in_russian.questions << rus_beer
@@ -63,13 +62,27 @@ animals_in_russian.questions << rus_camel
 animals_in_russian.questions << rus_rabbit
 animals_in_russian.questions << rus_monkey
 
+Attempt.create(:quiz_id => drinks_in_russian.id, :user_id => maria.id, :score => 100)
+Attempt.create(:quiz_id =>  drinks_in_russian.id, :user_id => maria.id, :score => 80)
+Attempt.create(:quiz_id =>  drinks_in_russian.id, :user_id => darshil.id, :score => 65)
+Attempt.create(:quiz_id =>  drinks_in_russian.id, :user_id => rima.id, :score => 77)
+Attempt.create(:quiz_id => animals_in_korean.id, :user_id => jerry.id, :score => 88)
+Attempt.create(:quiz_id => animals_in_korean.id, :user_id => jerry.id, :score => 90)
+Attempt.create(:quiz_id => foods_in_french.id, :user_id => darshil.id, :score => 46)
+Attempt.create(:quiz_id => foods_in_french.id, :user_id => rima.id, :score => 87)
 
 c_1 = Comment.create(:body => 'Fun!', :user_id => maria.id, :quiz_id => drinks_in_russian.id)
 c_2 = Comment.create(:body => 'I love this quiz!', :user_id => jerry.id, :quiz_id => drinks_in_russian.id)
 c_3 = Comment.create(:body => 'So helpful', :user_id => rima.id, :quiz_id => drinks_in_russian.id)
 c_4 = Comment.create(:body => 'Great!', :user_id => darshil.id, :quiz_id => drinks_in_russian.id)
+c_5 = Comment.create(:body => 'I hated this course!', :user_id => darshil.id, :quiz_id => animals_in_russian.id)
+c_6 = Comment.create(:body => 'I hated this!', :user_id => darshil.id, :quiz_id => animals_in_korean.id)
+c_6 = Comment.create(:body => 'This was such a fun course!', :user_id => darshil.id, :quiz_id => foods_in_korean.id)
 
 Friendship.create(user: maria, friend: jerry)
 Friendship.create(user: jerry, friend: maria)
 Friendship.create(user: maria, friend: rima)
 Friendship.create(user: rima, friend: darshil)
+Friendship.create(user: jerry, friend: darshil)
+Friendship.create(user: maria, friend: darshil)
+

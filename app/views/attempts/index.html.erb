@@ -26,6 +26,50 @@
   </tbody>
 </table>
 
+<%= link_to 'New Attempt', new_attempt_path %>
+
+<h1>Average Score Per User</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Average Score</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @average_score_per_user.each do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Top 3 Scoring Quizzes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Average User Score</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @average_score_per_quiz.each do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <br>
 
-<%= link_to 'New Attempt', new_attempt_path %>
+

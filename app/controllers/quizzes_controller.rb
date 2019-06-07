@@ -5,6 +5,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes.json
   def index
     @quizzes = Quiz.all
+    @quizzes_per_language = Quiz.select(:language_learning).group(:language_learning).count(:language_learning)
   end
 
   # GET /quizzes/1

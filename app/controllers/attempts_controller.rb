@@ -5,6 +5,8 @@ class AttemptsController < ApplicationController
   # GET /attempts.json
   def index
     @attempts = Attempt.all
+    @average_score_per_user = Attempt.select(:user_id).joins("INNER JOIN users ON attempts.user_id = users.id").group(:username).average(:score).sort_by{|username, avg_score| avg_score}.reverse
+    @average_score_per_quiz = Attempt.select(:title).joins("INNER JOIN quizzes ON quizzes.id = attempts.quiz_id").group(:title).average(:score).sort_by{|title, avg_score| avg_score}.reverse.first(3)
   end
 
   # GET /attempts/1
