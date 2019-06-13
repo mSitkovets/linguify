@@ -36,11 +36,6 @@ class FriendshipsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should update friendship" do
-    patch friendship_url(@friendship), params: { friendship: { friend_id: @user_one.id, user_id: @user_two.id } }
-    assert_redirected_to friendship_url(@friendship)
-  end
-
   test "should destroy friendship" do
     assert_difference('Friendship.count', -1) do
       delete friendship_url(@friendship)
