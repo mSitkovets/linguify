@@ -1,0 +1,26 @@
+// Place all the styles related to the Explore controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.explore {
+  max-width: 80em;
+  ul.catalog {
+    border-top: solid 0.250em;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    li {
+      padding: 1em;
+      margin: 0;
+      border-bottom: solid thin #ddd;
+// This makes sure our <li> has enough height // to hold the entire image, since it's floated &::after {
+&::after{
+  clear: both; 
+  content: " "; 
+  display: block;
+}
+
+.difficulty, .lang_learning, .instr_lang {
+        font-size: 1.414em;
+      }
+} }
+}

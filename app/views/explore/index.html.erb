@@ -1,0 +1,22 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+  <h1>Search Through Quizzes</h1>
+  <ul class="catalog">
+    <% @quizzes.each do |quiz| %>
+    <li>
+      <h2><%= quiz.title %></h2>
+      <p>
+      <%= sanitize(quiz.description) %> </p>
+      <div class="lang_learn"> 
+        <p><b>Learn: </b><%= quiz.language_learning %></p>
+      </div> 
+      <div class="instr_lang"> 
+        <p><b>From: </b><%= quiz.instruction_language %></p>
+      </div> 
+      <div class="difficulty"> 
+        <p><b>Level: </b><%= quiz.difficulty_level %></p>
+      </div> 
+    </li>
+  <% end %> 
+</ul>
