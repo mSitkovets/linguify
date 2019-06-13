@@ -3,6 +3,8 @@ require 'test_helper'
 class FriendshipsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @friendship = friendships(:one)
+    @user_one = users(:one)
+    @user_two = users(:two)
   end
 
   test "should get index" do
@@ -16,8 +18,9 @@ class FriendshipsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create friendship" do
+    #Friendship.delete_all
     assert_difference('Friendship.count') do
-      post friendships_url, params: { friendship: { friend_id: @friendship.friend_id, user_id: @friendship.user_id } }
+      post friendships_url, params: { friendship: { friend_id: @user_one.id, user_id: @user_two.id } }
     end
 
     assert_redirected_to friendship_url(Friendship.last)
@@ -34,7 +37,7 @@ class FriendshipsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update friendship" do
-    patch friendship_url(@friendship), params: { friendship: { friend_id: @friendship.friend_id, user_id: @friendship.user_id } }
+    patch friendship_url(@friendship), params: { friendship: { friend_id: @user_one.id, user_id: @user_two.id } }
     assert_redirected_to friendship_url(@friendship)
   end
 

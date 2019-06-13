@@ -31,6 +31,7 @@ class QuestionsController < ApplicationController
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
         format.json { render :show, status: :created, location: @question }
       else
+        puts @question.errors.full_messages
         format.html { render :new }
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
@@ -69,6 +70,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:question, :option_a, :option_b, :option_c, :answer)
+      params.require(:question).permit(:question, :option_a, :option_b, :option_c, :answer, :quiz_id)
     end
 end

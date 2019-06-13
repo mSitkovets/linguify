@@ -3,4 +3,5 @@ class Quiz < ApplicationRecord
   has_many :attempts, dependent: :destroy
   has_many :questions, dependent: :destroy
   has_many :comments, dependent: :destroy
+  # belongs_to :user, optional: true
 end

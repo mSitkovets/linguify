@@ -1,7 +1,7 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  username: maria707
+  username: maria705
   password: MyString
   email: maria@gmail.com
 

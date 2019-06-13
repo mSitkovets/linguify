@@ -46,6 +46,7 @@ class CommentsController < ApplicationController
         format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
         format.json { render :show, status: :ok, location: @comment }
       else
+        puts @comment.errors.full_messages
         format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
