@@ -3,11 +3,23 @@
 one:
   title: MyString
   description: MyText
-  user_id: 1
-  difficulty_level: 1
+  user_id: one
+  difficulty_level: Beginner
+  instruction_language: English
+  language_learning: Russian
 
 two:
   title: MyString
   description: MyText
-  user_id: 1
-  difficulty_level: 1
+  user_id: two
+  difficulty_level: Beginner
+  instruction_language: English
+  language_learning: Russian
+
+swahili_foods: 
+  title: Foods in Swahili
+  description: Fun quiz
+  user_id: one
+  difficulty_level: Beginner
+  instruction_language: English
+  language_learning: Swahili
