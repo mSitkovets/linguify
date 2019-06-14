@@ -28,7 +28,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user email" do
-    ok = %w{ aram@gmail.com aram@yahoo.com aram@hotmail.com aram@live.com aram@gmail.ca aram@yahoo.ca aram@hotmail.ca aram@live.ca}
+    ok = %w{ aram@gmail.com aram@yahoo.com aram@hotmail.com aram@live.com aram@gmail.ca aram@yahoo.ca aram@hotmail.ca aram@live.ca ty@mariasitkovets.ca}
     bad = %w{ aram4gmail.com aram%yahoo.com aram#live.com}
 
     ok.each do |user_email|

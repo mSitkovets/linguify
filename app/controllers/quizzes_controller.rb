@@ -32,6 +32,7 @@ class QuizzesController < ApplicationController
         format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
         format.json { render :show, status: :created, location: @quiz }
       else
+        puts @quiz.errors.full_messages
         format.html { render :new }
         format.json { render json: @quiz.errors, status: :unprocessable_entity }
       end
@@ -70,6 +71,6 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:title, :description, :user_id, :difficulty_level)
+      params.require(:quiz).permit(:title, :description, :user_id, :difficulty_level, :language_learning, :instruction_language)
     end
 end
