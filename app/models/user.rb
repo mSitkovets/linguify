@@ -1,4 +1,14 @@
 class User < ApplicationRecord
+  after_destroy :ensure_an_admin_remains 
+  class Error < StandardError
+  end
+  private
+    def ensure_an_admin_remains
+      if User.count.zero?
+        raise Error.new "Can't delete last user"
+      end 
+    end
+    
   validates :username, :password, :email, presence: true
   validates :username, :email, uniqueness: true
   validates :email, format: {:with => /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i, multiline: true}

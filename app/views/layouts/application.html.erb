@@ -17,8 +17,17 @@
       <nav class="side_nav">
         <ul>
         <li><a href="/">Home</a></li>
-        <li><a href="/quizzes">Quizzes</a></li>
         <li><a href="/profile">Your Profile</a></li>
+        </ul>
+        <% if session[:user_id] %> 
+          <nav class="logged_in_nav">
+          <ul>
+            <li><%= link_to 'Quizzes', quizzes_path %></li> 
+            <li><%= link_to 'Questions', questions_path %></li> 
+            <li><%= button_to 'Logout', logout_path, method: :delete  %></li>
+          </ul>
+      </nav>
+      <% end %>
       </nav>
       <main class='<%= controller.controller_name %>'>
         <%= yield %>
