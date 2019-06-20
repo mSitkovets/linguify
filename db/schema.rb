@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_06_141720) do
+ActiveRecord::Schema.define(version: 2019_06_20_133504) do
 
   create_table "attempts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "quiz_id"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(version: 2019_06_06_141720) do
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
     t.index ["user_id"], name: "index_friendships_on_user_id"
+  end
+
+  create_table "line_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "quiz_id"
+    t.bigint "list_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["list_id"], name: "index_line_items_on_list_id"
+    t.index ["quiz_id"], name: "index_line_items_on_quiz_id"
+  end
+
+  create_table "lists", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -69,4 +83,6 @@ ActiveRecord::Schema.define(version: 2019_06_06_141720) do
 
   add_foreign_key "friendships", "users"
   add_foreign_key "friendships", "users", column: "friend_id"
+  add_foreign_key "line_items", "lists"
+  add_foreign_key "line_items", "quizzes"
 end

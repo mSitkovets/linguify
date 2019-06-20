@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lists
   resources :line_items
   root 'explore#index', as: 'explore_index'
   resources :friendships

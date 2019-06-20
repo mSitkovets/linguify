@@ -38,6 +38,13 @@ class QuizzesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to quiz_url(@quiz)
   end
 
+  test "can't delete quiz in list" do 
+    assert_difference('Quiz.count', 0) do
+      delete quizzes_url(quizzes(:two)) 
+    end
+      assert_redirected_to quizzes_url
+  end
+  
   test "should destroy quiz" do
     assert_difference('Quiz.count', -1) do
       delete quiz_url(@quiz)
