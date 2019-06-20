@@ -19,6 +19,9 @@
             <div class="difficulty"> 
               <p><b>Level: </b><%= quiz.difficulty_level %></p>
             </div> 
+            <div class="button">
+              <%= button_to 'Add to Play Later', line_items_path(quiz_id: quiz) %>
+            </div>
           </li>
       <% end %>
     <% end %> 

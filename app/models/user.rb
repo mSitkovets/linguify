@@ -13,4 +13,6 @@ class User < ApplicationRecord
 
   has_many :follows, class_name: "Friendship", foreign_key: "friend_id"
   has_many :followers, through: :follows, source: :user
+
+  has_secure_password
 end

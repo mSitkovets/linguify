@@ -17,10 +17,12 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create line_item" do
     assert_difference('LineItem.count') do
-      post line_items_url, params: { line_item: { list_id: @line_item.list_id, quiz_id: @line_item.quiz_id } }
+      post line_items_url, params: { quiz_id: quizzes(:swahili_foods).id }
     end
 
-    assert_redirected_to line_item_url(LineItem.last)
+    follow_redirect!
+  assert_select 'h2', 'Your Saved Quizzes'
+  assert_select 'li', 'Foods in Swahili'
   end
 
   test "should show line_item" do

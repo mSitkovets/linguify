@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @users = User.order(:username)
     @most_following_users = User.select(:username).joins("INNER JOIN friendships ON friendships.user_id = users.id").group(:username).count(:friend_id).sort_by{|username, num_friends| num_friends}.reverse
     @most_followed_users = User.select(:username).joins("INNER JOIN friendships ON friendships.friend_id = users.id").group(:username).count(:user_id).sort_by{|username, num_friends| num_friends}.reverse
     @most_recent_to_add_friend = User.all.joins("INNER JOIN friendships ON friendships.user_id = users.id").sort_by(&:created_at).reverse.first(5)
@@ -31,7 +31,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        format.html { redirect_to users_url,
+          notice: "User #{@user.username} was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
         puts @user.errors.full_messages
@@ -46,7 +47,8 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        format.html { redirect_to users_url,
+          notice: "User #{@user.username} was successfully updated." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -73,6 +75,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:username, :password, :email)
+      params.require(:user).permit(:username, :password, :email, :password_confirmation)
     end
 end
