@@ -45,6 +45,6 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
       delete list_url(@list)
     end
 
-    assert_redirected_to store_index_url
+    assert_redirected_to explore_index_url
   end
 end

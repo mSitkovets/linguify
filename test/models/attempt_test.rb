@@ -7,7 +7,7 @@ class AttemptTest < ActiveSupport::TestCase
     assert attempt.invalid?
     assert attempt.errors[:user_id].any?
     assert attempt.errors[:quiz_id].any?
-    assert attempt.errors[:score].any?
+    assert attempt.errors[:score].empty?
   end
 
   test "attempt score must be a positive integer" do
