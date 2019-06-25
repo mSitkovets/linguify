@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_20_173112) do
+ActiveRecord::Schema.define(version: 2019_06_21_182316) do
 
   create_table "attempts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "quiz_id"
     t.integer "user_id"
-    t.integer "score"
+    t.integer "score", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 2019_06_20_173112) do
     t.bigint "list_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity", default: 1
     t.index ["list_id"], name: "index_line_items_on_list_id"
     t.index ["quiz_id"], name: "index_line_items_on_quiz_id"
   end

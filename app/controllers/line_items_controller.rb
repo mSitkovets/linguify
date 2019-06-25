@@ -2,7 +2,6 @@ class LineItemsController < ApplicationController
   include CurrentList
   before_action :set_list, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: :create
 
   # GET /line_items
   # GET /line_items.json
@@ -28,12 +27,14 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     quiz = Quiz.find(params[:quiz_id])
-    @line_item = @list.line_items.build(quiz: quiz)
+    @line_item = @list.add_quiz(quiz)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.list, notice: 'Line item was successfully created.' }
+        format.html { redirect_to @line_item.list }
         format.json { render :show, status: :created, location: @line_item }
+      # elsif 
+      #   format.html { redirect_to @line_item.list, notice: 'Quiz was already added to Play Later.' }
       else
         format.html { render :new }
         format.json { render json: @line_item.errors, status: :unprocessable_entity }
@@ -46,7 +47,7 @@ class LineItemsController < ApplicationController
   def update
     respond_to do |format|
       if @line_item.update(line_item_params)
-        format.html { redirect_to @line_item, notice: 'Line item was successfully updated.' }
+        format.html { redirect_to @line_item, notice: 'Quiz was successfully updated.' }
         format.json { render :show, status: :ok, location: @line_item }
       else
         format.html { render :edit }
@@ -60,7 +61,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Line item was successfully destroyed.' }
+      format.html { redirect_to line_items_url, notice: 'Quiz was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -73,6 +74,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:quiz_id, :list_id)
+      params.require(:line_item).permit(:quiz_id)
     end
 end

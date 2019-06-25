@@ -1,6 +1,6 @@
 class ListsController < ApplicationController
   before_action :set_list, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authorize, only: [:create, :update, :destroy]
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_list
 
   # GET /lists
   # GET /lists.json
@@ -55,9 +55,11 @@ class ListsController < ApplicationController
   # DELETE /lists/1
   # DELETE /lists/1.json
   def destroy
-    @list.destroy
+    @list.destroy if @list.id == session[:list_id]
+    session[:list_id] = nil
     respond_to do |format|
-      format.html { redirect_to lists_url, notice: 'List was successfully destroyed.' }
+      format.html { redirect_to explore_index_url, 
+        notice: 'Your list is currently empty.' }
       format.json { head :no_content }
     end
   end
@@ -71,5 +73,10 @@ class ListsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def list_params
       params.fetch(:list, {})
+    end
+
+    def invalid_list
+      logger.error "Attempt to access invalid list #{params[:id]}" 
+      redirect_to explore_index_url, notice: 'Invalid list'
     end
 end

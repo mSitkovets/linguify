@@ -36,7 +36,8 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update line_item" do
-    patch line_item_url(@line_item), params: { line_item: { list_id: @line_item.list_id, quiz_id: @line_item.quiz_id } }
+    patch line_item_url(@line_item), 
+      params: { line_item: { quiz_id: @line_item.quiz_id } }
     assert_redirected_to line_item_url(@line_item)
   end
 

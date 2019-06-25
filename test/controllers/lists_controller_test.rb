@@ -39,10 +39,12 @@ class ListsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should destroy list" do
+    post line_items_url, params: { quiz_id: quizzes(:swahili_foods).id } 
+    @list = List.find(session[:list_id])
     assert_difference('List.count', -1) do
       delete list_url(@list)
     end
 
-    assert_redirected_to lists_url
+    assert_redirected_to store_index_url
   end
 end

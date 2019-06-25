@@ -7,3 +7,6 @@
     <li><%= item.quiz.title %></li>
   <% end %> 
 </ul>
+
+<%= button_to 'Empty list', @list, method: :delete, 
+  data: { confirm: 'Are you sure?' } %>
