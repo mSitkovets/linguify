@@ -23,7 +23,7 @@
               <%= button_to 'Play Now', quizzes_path(quiz_id: quiz) %>
             </div>
             <div class="button">
-              <%= button_to 'Add to Play Later', line_items_path(quiz_id: quiz) %>
+              <%= button_to 'Add to Play Later', line_items_path(quiz_id: quiz), remote: true %>
             </div>
           </li>
       <% end %>
