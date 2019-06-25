@@ -61,7 +61,7 @@ class LineItemsController < ApplicationController
   def destroy
     @line_item.destroy
     respond_to do |format|
-      format.html { redirect_to line_items_url, notice: 'Quiz was successfully destroyed.' }
+      format.html { redirect_to explore_index_url, notice: 'Quiz was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
