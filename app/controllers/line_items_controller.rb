@@ -31,7 +31,7 @@ class LineItemsController < ApplicationController
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to @line_item.list }
+        format.html { redirect_to explore_index_url }
         format.json { render :show, status: :created, location: @line_item }
       # elsif 
       #   format.html { redirect_to @line_item.list, notice: 'Quiz was already added to Play Later.' }

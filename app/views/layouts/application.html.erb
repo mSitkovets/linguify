@@ -15,6 +15,11 @@
     </header>
     <section class="content">
       <nav class="side_nav">
+        <% if @list %>
+          <div id="list" class="lists"> 
+            <%= render @list %>
+          </div>
+        <% end %>
         <ul>
         <li><a href="/">Home</a></li>
         </ul>
