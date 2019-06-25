@@ -1,12 +1,21 @@
-<% if notice %>
-  <aside id="notice"><%= notice %></aside>
-<% end %>
-<h2>Your Saved Quizzes</h2>
-<ul>
-  <% @list.line_items.each do |item| %> 
-    <li><%= item.quiz.title %></li>
-  <% end %> 
-</ul>
-
-<%= button_to 'Empty list', @list, method: :delete, 
-  data: { confirm: 'Are you sure?' } %>
+ <article>
+  <% if notice %>
+    <aside id="notice"><%= notice %></aside>
+  <% end %>
+  <h2>Your Play Later List</h2>
+  <table>
+    <tr>
+      <th> Quiz </th>
+      <th> Language </th>
+    </tr>
+    <% @list.line_items.each do |line_item| %> 
+      <tr>
+        <td><%= line_item.quiz.title %></td>
+        <td class="language"><%= line_item.quiz.language_learning %></td>   
+      </tr>
+    <% end %> 
+</table>
+<%= button_to 'Empty list', @list, 
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+</article>

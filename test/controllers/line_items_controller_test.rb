@@ -21,8 +21,8 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     end
 
     follow_redirect!
-  assert_select 'h2', 'Your Saved Quizzes'
-  assert_select 'li', 'Foods in Swahili'
+    assert_select 'h2', 'Your Play Later List'
+    assert_select 'td', 'Foods in Swahili'
   end
 
   test "should show line_item" do
