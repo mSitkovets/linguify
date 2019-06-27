@@ -69,6 +69,16 @@ class QuizzesController < ApplicationController
     end
   end
 
+  def who_created
+    @quiz = Quiz.find(params[:id])
+    @latest_quiz = Quiz.last 
+    if stale?(@latest_quiz)
+      respond_to do |format| 
+        format.atom
+      end 
+    end   
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz
