@@ -26,10 +26,12 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
+    @quiz.user_id = session[:user_id]
 
     respond_to do |format|
       if @quiz.save
-        format.html { redirect_to @quiz, notice: 'Quiz was successfully created.' }
+        format.html { redirect_to explore_index_url, notice:
+          'Your quiz has been successfully created.' }
         format.json { render :show, status: :created, location: @quiz }
       else
         puts @quiz.errors.full_messages

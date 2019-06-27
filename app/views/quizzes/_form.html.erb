@@ -13,25 +13,30 @@
 
   <div class="field">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, id: :quiz_title, size: 40 %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description, id: :quiz_description, rows: 3, cols: 40 %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id %>
+  <%= form.label :language_learning %>
+  <%= form.select :language_learning, Quiz.language_learnings.keys, id: :quiz_language_learning, prompt: 'Select a language'  %>
   </div>
-
+  
+  <div class="field">
+    <%= form.label :instruction_language %>
+    <%= form.select :instruction_language, Quiz.instruction_languages.keys, id: :quiz_instruction_language, prompt: 'Select a language' %>
+  </div>
+  
   <div class="field">
     <%= form.label :difficulty_level %>
-    <%= form.text_field :difficulty_level %>
+    <%= form.select :difficulty_level, Quiz.difficulty_levels.keys, id: :quiz_difficulty_level, prompt: 'Select a level of difficulty' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Create Quiz' %>
   </div>
 <% end %>

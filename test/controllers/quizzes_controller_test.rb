@@ -20,7 +20,7 @@ class QuizzesControllerTest < ActionDispatch::IntegrationTest
       post quizzes_url, params: { quiz: { description: @quiz.description, difficulty_level: @quiz.difficulty_level, title: @quiz.title, user_id: @quiz.user_id , language_learning: @quiz.language_learning, instruction_language: @quiz.instruction_language} }
     end
 
-    assert_redirected_to quiz_url(Quiz.last)
+    assert_redirected_to explore_index_url
   end
 
   test "should show quiz" do
