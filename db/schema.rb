@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_21_182316) do
+ActiveRecord::Schema.define(version: 2019_06_27_152737) do
 
   create_table "attempts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.integer "quiz_id"
@@ -67,11 +67,11 @@ ActiveRecord::Schema.define(version: 2019_06_21_182316) do
     t.string "title"
     t.text "description"
     t.integer "user_id"
-    t.string "difficulty_level"
+    t.integer "difficulty_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "instruction_language"
-    t.string "language_learning"
+    t.integer "instruction_language"
+    t.integer "language_learning"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|

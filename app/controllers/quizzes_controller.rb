@@ -46,6 +46,10 @@ class QuizzesController < ApplicationController
       if @quiz.update(quiz_params)
         format.html { redirect_to @quiz, notice: 'Quiz was successfully updated.' }
         format.json { render :show, status: :ok, location: @quiz }
+
+        @quizzes = Quiz.all 
+        ActionCable.server.broadcast 'quizzes',
+          html: render_to_string('explore/index', layout: false)
       else
         format.html { render :edit }
         format.json { render json: @quiz.errors, status: :unprocessable_entity }

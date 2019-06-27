@@ -17,7 +17,7 @@
       <nav class="side_nav">
         <% if @list %>
           <div id="list" class="lists"> 
-            <%= render @list %>
+          <%= render_if @llistt && @list.line_items.any?, @list %>
           </div>
         <% end %>
         <ul>

@@ -10,12 +10,12 @@ rima = User.create(:username => 'rima456', :password => 'rjelks2348', :email => 
 darshil = User.create(:username => 'darshil378', :password => 'afsa3234fa', :email => 'darshil@gmail.ca')
 helen = User.create(:username => 'helen809', :password => 'afsa3234sdf', :email => 'helen@gmail.ca')
 
-drinks_in_russian = Quiz.create(:title => 'Drinks in Russian', :description => 'Learn how to say the names of all your favourite drinks!', :user_id => helen.id, :difficulty_level => 'Beginner', :language_learning => 'Russian', :instruction_language => "English")
-animals_in_russian = Quiz.create(:title => 'Animals in Russian', :description => 'Learn how to say the names of all your favourite animals!', :user_id => helen.id, :difficulty_level => 'Beginner', :language_learning => 'Russian', :instruction_language => "English")
-countries_in_french = Quiz.create(:title => 'Countries in French', :description => 'Learn how to say the names of many countries in the word!', :user_id => helen.id, :difficulty_level => 'Beginner', :language_learning => 'French', :instruction_language => "English")
-foods_in_french = Quiz.create(:title => 'Foods in French', :description => 'Learn how to say the names of all your favourite foods!', :user_id => helen.id, :difficulty_level => 'Beginner', :language_learning => 'French', :instruction_language => "English")
-foods_in_korean = Quiz.create(:title => 'Foods in Korean', :description => 'Learn how to say the names of all your favourite foods!', :user_id => helen.id, :difficulty_level => 'Beginner', :language_learning => 'Korean', :instruction_language => "English")
-animals_in_korean = Quiz.create(:title => 'Animals in Korean', :description => 'Learn how to say the names of all your favourite animals!', :user_id => helen.id, :difficulty_level => 'Beginner', :language_learning => 'Korean', :instruction_language => "English")
+drinks_in_russian = Quiz.create(:title => 'Drinks in Russian', :description => 'Learn how to say the names of all your favourite drinks!', :user_id => helen.id, :difficulty_level => 0, :language_learning => 3, :instruction_language => 0)
+animals_in_russian = Quiz.create(:title => 'Animals in Russian', :description => 'Learn how to say the names of all your favourite animals!', :user_id => helen.id, :difficulty_level => 0, :language_learning => 3, :instruction_language => 0)
+countries_in_french = Quiz.create(:title => 'Countries in French', :description => 'Learn how to say the names of many countries in the word!', :user_id => helen.id, :difficulty_level => 0, :language_learning => 1, :instruction_language => 0)
+foods_in_french = Quiz.create(:title => 'Foods in French', :description => 'Learn how to say the names of all your favourite foods!', :user_id => helen.id, :difficulty_level => 0, :language_learning => 1, :instruction_language => 0)
+foods_in_korean = Quiz.create(:title => 'Foods in Korean', :description => 'Learn how to say the names of all your favourite foods!', :user_id => helen.id, :difficulty_level => 0, :language_learning => 2, :instruction_language => 0)
+animals_in_korean = Quiz.create(:title => 'Animals in Korean', :description => 'Learn how to say the names of all your favourite animals!', :user_id => helen.id, :difficulty_level => 0, :language_learning => 2, :instruction_language => 0)
 
 
 rus_water = Question.create(:quiz_id => drinks_in_russian.id, :question => 'вода', :option_a => 'juice', :option_b => 'milk', :option_c => 'beer', :answer => 'water')
