@@ -79,6 +79,10 @@ class QuizzesController < ApplicationController
     end   
   end
 
+  def question_params
+    params.require(:question).permit(:question, :option_a, :option_b, :option_c, :answer) 
+  end
+  
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz

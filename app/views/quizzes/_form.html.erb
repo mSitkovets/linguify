@@ -36,6 +36,8 @@
     <%= form.select :difficulty_level, Quiz.difficulty_levels.keys, id: :quiz_difficulty_level, prompt: 'Select a level of difficulty' %>
   </div>
 
+  <div id='new-question-component'></div>
+
   <div class="actions">
     <%= form.submit 'Create Quiz' %>
   </div>
