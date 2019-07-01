@@ -48,3 +48,5 @@ Monorail.configure do |config|
   config.registry = Monorail::FileRegistry
   config.producer = Monorail::Producers::MemoryProducer
 end
+
+config.action_mailer.delivery_method = :test

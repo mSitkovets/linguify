@@ -69,3 +69,6 @@ Monorail.configure do |config|
   config.registry = Monorail::FileRegistry
   config.producer = Monorail::Producers::MemoryProducer
 end
+
+config.action_mailer.delivery_method = :letter_opener
+config.active_job.queue_adapter = :inline
