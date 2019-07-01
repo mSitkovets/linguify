@@ -24,7 +24,7 @@ header.main {
   @media(min-width: 30em){
     text-align: left; // left align on desktop }
   } // center on mobile @media (min-width: 30em) {
-  background: #282;
+  background: #FCCF4D;
   margin: 0;
   h1 {
     display: none;
@@ -45,7 +45,7 @@ header.main {
   }
   nav {
     padding-bottom: 1em;
-    background: #141;
+    background: #00848E;
     text-align: center;
      // mobile has centered nav @media (min-width: 30em) {
     @media (min-width: 30em){
@@ -66,7 +66,7 @@ header.main {
       text-transform: uppercase; 
       letter-spacing: 0.354em; 
       a{
-        color: #bfb;
+        color: #e0e9e8;
         text-decoration: none;
       }
       a:hover {
@@ -83,8 +83,8 @@ main {
   .notice, #notice {
     background: #ffb;
     border-radius: 0.5em;
-    border: solid 0.177em #882;
-    color: #882;
+    border: solid 0.177em #B7ECEC;
+    color: #B7ECEC;
     font-weight: bold;
     margin-bottom: 1em;
     padding: 1em 1.414em;
@@ -93,13 +93,13 @@ main {
 }
 
 nav.logged_in_nav { 
-  border-top: solid thin #bfb; 
+  border-top: solid thin #B7ECEC; 
   padding: 0.354em 0; 
   margin-top: 0.354em;
   input[type="submit"] {
   // Make the logout button look like a // link, so it matches the nav style background: none;
   border: none;
-      color: #bfb;
+      color: #003135;
       font-size: 1em;
       letter-spacing: 0.354em;
       margin: 0;
@@ -152,7 +152,7 @@ label {
     padding: 0.5em 0;
   }
 input[type="submit"] { 
-    background-color: #bfb; 
+    background-color: white; 
     border-radius: 0.354em; 
     border: solid thin #888; 
     color: black;

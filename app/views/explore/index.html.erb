@@ -20,7 +20,7 @@
               <p><b>Level: </b><%= quiz.difficulty_level %></p>
             </div> 
             <div class="button">
-              <%= button_to t('.play_html'),quizzes_path(quiz_id: quiz, locale: I18n.locale), remote: true %>
+              <%= button_to t('.play_html'), quizzes_path(quiz_id: quiz, locale: I18n.locale), remote: true %>
             </div>
             <div class="button">
             <%= button_to t('.add_html'), line_items_path(quiz_id: quiz, locale: I18n.locale),remote: true %>
