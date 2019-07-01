@@ -98,15 +98,15 @@ Monorail.configure do |config|
   config.registry = Monorail::FileRegistry
 end
 
-config.action_mailer.delivery_method = :smtp
+# config.action_mailer.delivery_method = :smtp
 
-Rails.configuration.after_initialize do
-  ActionMailer::Base.smtp_settings = {
-    port: 587,
-    address: "smtp.sendgrid.net",
-    user_name: "apikey",
-    password: ENV["SENDGRID_API_KEY"],
-    authentication: :plain,
-    enable_starttls_auto: true,
-  }
-end
+# Rails.configuration.after_initialize do
+#   ActionMailer::Base.smtp_settings = {
+#     port: 587,
+#     address: "smtp.sendgrid.net",
+#     user_name: "apikey",
+#     password: ENV["SENDGRID_API_KEY"],
+#     authentication: :plain,
+#     enable_starttls_auto: true,
+#   }
+# end

@@ -70,5 +70,5 @@ Monorail.configure do |config|
   config.producer = Monorail::Producers::MemoryProducer
 end
 
-config.action_mailer.delivery_method = :letter_opener
-config.active_job.queue_adapter = :inline
+# config.action_mailer.delivery_method = :letter_opener
+# config.active_job.queue_adapter = :inline

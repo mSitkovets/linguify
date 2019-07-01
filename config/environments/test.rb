@@ -49,4 +49,4 @@ Monorail.configure do |config|
   config.producer = Monorail::Producers::MemoryProducer
 end
 
-config.action_mailer.delivery_method = :test
+# config.action_mailer.delivery_method = :test
