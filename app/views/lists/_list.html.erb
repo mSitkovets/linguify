@@ -2,16 +2,16 @@
 <% if notice %>
   <aside id="notice"><%= notice %></aside>
 <% end %>
-<h2>Your Play Later List</h2>
+<h2><%= t('.title') %></h2>
 <table>
   <tr>
-    <th> Quiz </th>
-    <th> Language </th>
+    <th><%= t('.quiz') %></th>
+    <th><%= t('.language') %></th>
   </tr> 
   <%= render(list.line_items) %>  
 </table>
-<%= button_to 'Empty list', list, 
-            method: :delete,
-            data: { confirm: 'Are you sure?' } %>
+<%= button_to t('.empty'), list,
+  method: :delete,
+  data: { confirm: 'Are you sure?' } %>
 </article>
 

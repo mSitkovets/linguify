@@ -1,0 +1,63 @@
+es:
+  layouts:
+    application: 
+      title: "Hanji-Go"
+      home: "Inicio"
+  explore:
+    index:
+      title_html: "Buscar a Través de Pruebas" 
+      play_html: "Reproducir Ahora"
+      add_html: "Añadir a Jugar más Tarde"
+  lists: 
+    list:
+      title: "Tu Lista de Juegos más Tarde"
+      quiz: "Examen"
+      language: "Idioma"
+      empty: "Lista Vacía"
+  line_items:
+    line_item:
+      remove: "Retirar"
+  quizzes: 
+    new:
+      legend: "Por favor ingrese información acerca de su prueba"
+    form: 
+      title: "Título"
+      description: "Descripción"
+      language_learning: "Aprendizaje de idiomas"
+      instruction_language: "Idioma de instrucción"
+      difficulty_level: "Nivel de dificultad"
+      submit: "Crear cuestionario"
+      language_select: "Selecciona un idioma"
+      level_select: "Seleccione un nivel"
+      add_question: "Añadir pregunta"
+      add_question_type:
+        question: "Pregunta"
+        option_a: "Opción A"
+        option_b: "Opción B"
+        option_c: "Opción C"
+        answer: "Responder"
+  activerecord:
+    errors:
+      messages:
+        inclusion: "no est&aacute; incluido en la lista"
+        blank: "no puede quedar en blanco"
+    models:
+      quiz: "Examen"
+    attributes:
+      quiz:
+        title: "Título"
+        description: "Descripción"
+        language_learning: "Aprendizaje de idiomas"
+        instruction_language: "Idioma de instrucción"
+        difficulty_level: "Nivel de dificultad"
+
+  errors:
+    template:
+      body: "Hay problemas con los siguientes campos:"
+      header: 
+        one: "1 error ha impedido que este %{model} se guarde"
+        other: "%{count} errores han impedido que este %{model} se guarde"
+  success: "Has creado correctamente un cuestionario"
+
+      
+

@@ -30,4 +30,43 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      title: "Hanji-Go"
+      home: "Home"
+  explore:
+    index:
+      title_html: "Search Through Quizzes" 
+      play_html: "Play Now"
+      add_html: "Add to Play Later"
+  lists: 
+    list:
+      title: "Your Play Later List"
+      quiz: "Quiz"
+      language: "Language"
+      empty: "Empty list"
+  line_items:
+    line_item:
+      remove: "Remove"
+  quizzes: 
+    new:
+      legend: "Please Enter Information About Your Quiz"
+    form: 
+      title: "Title"
+      description: "Description"
+      language_learning: "Language Learning"
+      instruction_language: "Instruction Language"
+      difficulty_level: "Difficulty Level"
+      language_select: "Select a language"
+      level_select: "Select a level"
+      submit: "Create Quiz"
+      add_question: "Add Question"
+      add_question_type:
+        question: "Question"
+        option_a: "Option A"
+        option_b: "Option B"
+        option_c: "Option C"
+        answer: "Answer"
+  success: "You have successfully created a quiz"
+
+      

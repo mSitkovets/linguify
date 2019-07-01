@@ -30,8 +30,8 @@ class QuizzesController < ApplicationController
 
     respond_to do |format|
       if @quiz.save
-        format.html { redirect_to explore_index_url, notice:
-          'Your quiz has been successfully created.' }
+        format.html { redirect_to explore_index_url(locale: I18n.locale), notice:
+          I18n.t('.success')  }
         format.json { render :show, status: :created, location: @quiz }
       else
         puts @quiz.errors.full_messages

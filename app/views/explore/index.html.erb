@@ -1,7 +1,7 @@
 <% if notice %>
   <aside id="notice"><%= notice %></aside>
 <% end %>
-  <h1>Search Through Quizzes</h1>
+<h1><%= t('.title_html') %></h1>
   <ul class="catalog">
     <% cache @quizzes do %>
       <% @quizzes.each do |quiz| %>
@@ -20,10 +20,10 @@
               <p><b>Level: </b><%= quiz.difficulty_level %></p>
             </div> 
             <div class="button">
-              <%= button_to 'Play Now', quizzes_path(quiz_id: quiz) %>
+              <%= button_to t('.play_html'),quizzes_path(quiz_id: quiz, locale: I18n.locale), remote: true %>
             </div>
             <div class="button">
-              <%= button_to 'Add to Play Later', line_items_path(quiz_id: quiz), remote: true %>
+            <%= button_to t('.add_html'), line_items_path(quiz_id: quiz, locale: I18n.locale),remote: true %>
             </div>
           </li>
       <% end %>

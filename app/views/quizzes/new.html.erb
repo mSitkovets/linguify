@@ -1,5 +1,5 @@
 <section class="app_form"> 
-  <h1>Please Enter Information About Your Quiz</h1> 
+  <h1><%= t('.legend') %></h1>
   <%= render 'form', quiz: @quiz%>
 </section>
 <%= javascript_pack_tag("new_question") %>

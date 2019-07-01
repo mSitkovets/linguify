@@ -7,6 +7,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+      I18n.defaultLocale = "<%= I18n.default_locale %>"; 
+      I18n.locale = "<%= I18n.locale %>";
+    </script>
   </head>
 
   <body>
@@ -17,16 +21,16 @@
       <nav class="side_nav">
         <% if @list %>
           <div id="list" class="lists"> 
-          <%= render_if @llistt && @list.line_items.any?, @list %>
+          <%= render_if @list && @list.line_items.any?, @list %>
           </div>
         <% end %>
+
         <ul>
-        <li><a href="/">Home</a></li>
+          <li><a href="/"><%= t('.home') %></a></li>
         </ul>
         <% if session[:user_id] %> 
           <nav class="logged_in_nav">
           <ul>
-            <li><%= link_to 'Your Profile', questions_path %></li>
             <li><%= link_to 'Your Quizzes', quizzes_path %></li> 
             <li><%= button_to 'Logout', logout_path, method: :delete  %></li>
           </ul>
