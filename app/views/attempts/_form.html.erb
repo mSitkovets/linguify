@@ -1,8 +1,15 @@
 <%= form_with(model: attempt, local: true) do |form| %>
 
   <h1><%= @attempt.quiz.title %></h1>
-  <div id='question-component'></div>
-
+  <% counter = 1 %>
+  <% @attempt.quiz.questions.each do |question| %>
+    <h2>Q<%=counter%>: <%= question.question%></h2>
+    <% @answers[0].each do |answer| %>
+      <input type="radio"> <%= answer[0] %> <br>
+    <% end %>
+    <% counter +=1 %>
+    <% @answers.shift %>
+  <% end %>
   <div class="actions">
     <%= form.submit "Submit Quiz"%> 
   </div>

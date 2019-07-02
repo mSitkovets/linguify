@@ -19,29 +19,15 @@ class AttemptsController < ApplicationController
   # GET /attempts/new
   def new
     @attempt = Attempt.new(new_attempt_params)
+    @answers = []
+    @attempt.quiz.questions.each do |question|
+      @answers << { question.option_a => 0, question.option_b => 0, question.option_c => 0, question.answer => 1 }.to_a.shuffle.to_h  
+    end
     @attempt.save
   end 
 
   # GET /attempts/1/edit
   def edit
-  end
-
-  # POST /attempts
-  # POST /attempts.json
-  def create
-    @attempt = Attempt.new(attempt_params)
-    @attempt.user_id = session[:user_id]
-    @quiz = @attempt.quiz
-
-    respond_to do |format|
-      if @attempt.save
-        format.html { redirect_to @attempt, notice: 'Attempt was successfully created.' }
-        format.json { render :show, status: :created, location: @attempt }
-      else
-        format.html { render :new }
-        format.json { render json: @attempt.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   # PATCH/PUT /attempts/1
