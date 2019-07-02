@@ -17,7 +17,7 @@ class AttemptsController < ApplicationController
   # GET /attempts/new
   def new
     @attempt = Attempt.new
-  end
+  end 
 
   # GET /attempts/1/edit
   def edit
@@ -27,6 +27,8 @@ class AttemptsController < ApplicationController
   # POST /attempts.json
   def create
     @attempt = Attempt.new(attempt_params)
+    @attempt.user_id = session[:user_id]
+    @attempt.quiz_id = Attempt.find(params[:quiz_id])
 
     respond_to do |format|
       if @attempt.save

@@ -27,6 +27,7 @@ class NewQuestionCreator extends React.Component {
 
         {this.getAppendedComponents()}
         <button onClick={this.addQuestion}>{I18n.t("quizzes.form.add_question")}</button> 
+        
       </div>
     );
 

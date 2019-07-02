@@ -80,7 +80,7 @@ class QuizzesController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit(:question, :option_a, :option_b, :option_c, :answer) 
+    params.require(:question).permit(:question, :option_a, :option_b, :option_c, :answer, :quiz_id) 
   end
   
   private

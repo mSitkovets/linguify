@@ -52,14 +52,14 @@ class QuizzesTest < ApplicationSystemTestCase
     first('.catalog li').click_on 'Add to Play Later'
     fill_in 'username', with: 'helen809'
     fill_in 'password', with: 'afsa3234sdf'
-    # visit quizzes_url
-    # click_on 'New Quiz'
-    # fill_in 'quiz_title', with: 'Foods in French' 
-    # fill_in 'quiz_description', with: 'Cool new quiz!'
-    # assert_no_selector "#quiz_routing_number"
-    # select 'French', from: 'language_learning' 
-    # select 'English', from: 'instruction_language'
-    # select 'Beginner', from: 'difficulty_level'
-    # assert_selector "#quiz_routing_number" 
+    visit quizzes_url
+    click_on 'New Quiz'
+    fill_in 'quiz_title', with: 'Foods in French' 
+    fill_in 'quiz_description', with: 'Cool new quiz!'
+    assert_no_selector "#quiz_routing_number"
+    select 'French', from: 'language_learning' 
+    select 'English', from: 'instruction_language'
+    select 'Beginner', from: 'difficulty_level'
+    assert_selector "#quiz_routing_number" 
   end
 end

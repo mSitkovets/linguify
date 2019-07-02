@@ -38,4 +38,6 @@ class ListsTest < ApplicationSystemTestCase
 
     assert_text "List was successfully destroyed"
   end
+
+  
 end

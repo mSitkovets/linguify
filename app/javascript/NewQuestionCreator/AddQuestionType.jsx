@@ -16,32 +16,32 @@ class AddQuestionType extends React.Component {
             {I18n.t("quizzes.form.add_question_type.option_a")}
         </label> 
         <input type="text"
-              name="order[option_a]"
-              id="order_option_a" /> 
+              name="question[option_a]"
+              id="question_option_a" /> 
         </div>
         <div className="field">
         <label htmlFor="question_option_b">
             {I18n.t("quizzes.form.add_question_type.option_b")}
        </label> 
         <input type="text"
-              name="order[option_b]"
-              id="order_option_b" /> 
+              name="question[option_b]"
+              id="question_option_b" /> 
         </div>
         <div className="field">
         <label htmlFor="question_option_c">
             {I18n.t("quizzes.form.add_question_type.option_c")}
       </label> 
         <input type="text"
-              name="order[option_c]"
-              id="order_option_c" /> 
+              name="question[option_c]"
+              id="question_option_c" /> 
         </div>
         <div className="field">
         <label htmlFor="question_answer">
             {I18n.t("quizzes.form.add_question_type.answer")}
       </label> 
         <input type="text"
-              name="order[answer]"
-              id="order_answer" /> 
+              name="question[answer]"
+              id="question_answer" /> 
         </div>
     </div> 
   );
