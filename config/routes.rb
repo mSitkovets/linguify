@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  resources :plays
-  resources :games
   get 'admin' => 'admin#index'
   controller :sessions do
     get 'login' => :new
@@ -12,7 +10,9 @@ Rails.application.routes.draw do
   resources :friendships
   resources :comments
   resources :questions
-  resources :attempts
+  resources :quizzes do
+    resources :attempts
+  end
   
   resources :users
 

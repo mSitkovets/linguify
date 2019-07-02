@@ -7,6 +7,8 @@ class AttemptsController < ApplicationController
     @attempts = Attempt.all
     @average_score_per_user = Attempt.select(:user_id).joins("INNER JOIN users ON attempts.user_id = users.id").group(:username).average(:score).sort_by{|username, avg_score| avg_score}.reverse
     @average_score_per_quiz = Attempt.select(:title).joins("INNER JOIN quizzes ON quizzes.id = attempts.quiz_id").group(:title).average(:score).sort_by{|title, avg_score| avg_score}.reverse.first(3)
+    
+    
   end
 
   # GET /attempts/1
@@ -16,7 +18,8 @@ class AttemptsController < ApplicationController
 
   # GET /attempts/new
   def new
-    @attempt = Attempt.new
+    @attempt = Attempt.new(new_attempt_params)
+    @attempt.save
   end 
 
   # GET /attempts/1/edit
@@ -28,7 +31,7 @@ class AttemptsController < ApplicationController
   def create
     @attempt = Attempt.new(attempt_params)
     @attempt.user_id = session[:user_id]
-    @attempt.quiz_id = Attempt.find(params[:quiz_id])
+    @quiz = @attempt.quiz
 
     respond_to do |format|
       if @attempt.save
@@ -72,7 +75,11 @@ class AttemptsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def attempt_params
-      params.require(:attempt).permit(:quiz_id, :user_id, :score)
+    def new_attempt_params
+      params.permit(:quiz_id, :user_id)
+    end
+
+    def finished_attempt_params
+      params.require(:attempt).permit(:score)
     end
 end

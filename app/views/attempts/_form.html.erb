@@ -1,6 +1,6 @@
 <%= form_with(model: attempt, local: true) do |form| %>
 
-  <h1>Time to Test Your Knowledge!</h1>
+  <h1><%= @attempt.quiz.title %></h1>
   <div id='question-component'></div>
 
   <div class="actions">

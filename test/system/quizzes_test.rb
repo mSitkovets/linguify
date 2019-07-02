@@ -25,7 +25,7 @@ class QuizzesTest < ApplicationSystemTestCase
   end
 
   test "updating a Quiz" do
-    visit quizzes_url
+    visit '/quizzes'
     click_on "Edit", match: :first
 
     fill_in "Description", with: @quiz.description
