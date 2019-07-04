@@ -3,6 +3,10 @@ require "application_system_test_case"
 class ListsTest < ApplicationSystemTestCase
   setup do
     @list = lists(:one)
+    visit login_url
+    fill_in 'username', with: 'helen809'
+    fill_in 'password', with: 'afsa3234sdf'
+    click_on 'Login'   
   end
 
   test "visiting the index" do
@@ -38,6 +42,4 @@ class ListsTest < ApplicationSystemTestCase
 
     assert_text "List was successfully destroyed"
   end
-
-  
 end

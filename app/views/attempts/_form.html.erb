@@ -1,4 +1,4 @@
-<%= form_with(model: attempt, local: true) do |form| %>
+<%= form_with(model: [quiz, attempt], local: true, method: :patch) do |form| %>
 
   <h1><%= @attempt.quiz.title %></h1>
   <% counter = 1 %>

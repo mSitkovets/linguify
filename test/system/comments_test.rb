@@ -3,6 +3,10 @@ require "application_system_test_case"
 class CommentsTest < ApplicationSystemTestCase
   setup do
     @comment = comments(:one)
+    visit login_url
+    fill_in 'username', with: 'helen809'
+    fill_in 'password', with: 'afsa3234sdf'
+    click_on 'Login'   
   end
 
   test "visiting the index" do

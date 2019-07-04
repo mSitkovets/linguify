@@ -7,8 +7,6 @@ class AttemptsController < ApplicationController
     @attempts = Attempt.all
     @average_score_per_user = Attempt.select(:user_id).joins("INNER JOIN users ON attempts.user_id = users.id").group(:username).average(:score).sort_by{|username, avg_score| avg_score}.reverse
     @average_score_per_quiz = Attempt.select(:title).joins("INNER JOIN quizzes ON quizzes.id = attempts.quiz_id").group(:title).average(:score).sort_by{|title, avg_score| avg_score}.reverse.first(3)
-    
-    
   end
 
   # GET /attempts/1
@@ -18,12 +16,16 @@ class AttemptsController < ApplicationController
 
   # GET /attempts/new
   def new
-    @attempt = Attempt.new(new_attempt_params)
+    @attempt = Attempt.new(new_attempt_params.merge(user_id: session[:user_id]))
+    
     @answers = []
     @attempt.quiz.questions.each do |question|
       @answers << { question.option_a => 0, question.option_b => 0, question.option_c => 0, question.answer => 1 }.to_a.shuffle.to_h  
     end
-    @attempt.save
+
+    @attempt.save!
+    @attempt.reload
+    @quiz = @attempt.quiz
   end 
 
   # GET /attempts/1/edit

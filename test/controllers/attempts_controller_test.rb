@@ -11,36 +11,28 @@ class AttemptsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get new" do
-    get new_quiz_attempt_url
-    quiz_assert_response :success
-  end
-
-  test "should create attempt" do
-    assert_difference('Attempt.count') do
-      post quiz_attempts_url, params: { attempt: { quiz_id: @attempt.quiz_id, score: @attempt.score, user_id: @attempt.user_id } }
-    end
-
-    assert_redirected_to quiz_attempt_url(Attempt.last)
+    get new_quiz_attempt_url(quiz_id: @attempt.quiz_id)
+    assert_response :success
   end
 
   test "should show attempt" do
-    get quiz_attempt_url(@attempt)
+    get quiz_attempt_url
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_quiz_attempt_url(@attempt)
+    get edit_quiz_attempt_url
     assert_response :success
   end
 
   test "should update attempt" do
-    patch quiz_attempt_url(@attempt), params: { attempt: { quiz_id: @attempt.quiz_id, score: @attempt.score, user_id: @attempt.user_id } }
-    assert_redirected_to quiz_attempt_url(@attempt)
+    patch quiz_attempt_url, params: { attempt: { quiz_id: @attempt.quiz_id, score: @attempt.score, user_id: @attempt.user_id } }
+    assert_redirected_to quiz_attempt_url
   end
 
   test "should destroy attempt" do
     assert_difference('Attempt.count', -1) do
-      delete quiz_attempt_url(@attempt)
+      delete quiz_attempt_url
     end
 
     assert_redirected_to quiz_attempts_url

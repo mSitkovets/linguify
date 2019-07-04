@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(question_params)
-    @question.quiz_id = Question.find(params[:quiz_id])
+    # @question.quiz_id = Question.find(params[:quiz_id])
 
     respond_to do |format|
       if @question.save

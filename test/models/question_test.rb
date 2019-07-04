@@ -10,6 +10,5 @@ class QuestionTest < ActiveSupport::TestCase
     assert question.errors[:option_b].any?
     assert question.errors[:option_c].any?
     assert question.errors[:answer].any?
-    assert question.errors[:quiz_id].any?
   end
 end

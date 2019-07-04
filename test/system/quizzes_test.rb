@@ -3,6 +3,10 @@ require "application_system_test_case"
 class QuizzesTest < ApplicationSystemTestCase
   setup do
     @quiz = quizzes(:one)
+    visit login_url
+    fill_in 'username', with: 'helen809'
+    fill_in 'password', with: 'afsa3234sdf'
+    click_on 'Login'    
   end
 
   test "visiting the index" do
@@ -25,7 +29,7 @@ class QuizzesTest < ApplicationSystemTestCase
   end
 
   test "updating a Quiz" do
-    visit '/quizzes'
+    visit quizzes_url
     click_on "Edit", match: :first
 
     fill_in "Description", with: @quiz.description
@@ -48,10 +52,11 @@ class QuizzesTest < ApplicationSystemTestCase
   end
 
   test "check routing number" do
-    visit explore_index_url
-    first('.catalog li').click_on 'Add to Play Later'
+    visit login_url
     fill_in 'username', with: 'helen809'
     fill_in 'password', with: 'afsa3234sdf'
+    click_on 'Login'  
+     
     visit quizzes_url
     click_on 'New Quiz'
     fill_in 'quiz_title', with: 'Foods in French' 

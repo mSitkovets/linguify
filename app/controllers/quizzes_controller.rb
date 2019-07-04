@@ -27,7 +27,6 @@ class QuizzesController < ApplicationController
   def create
     @quiz = Quiz.new(quiz_params)
     @quiz.user_id = session[:user_id]
-    binding.pry 
 
     respond_to do |format|
       if @quiz.save

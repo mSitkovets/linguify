@@ -3,6 +3,10 @@ require "application_system_test_case"
 class LineItemsTest < ApplicationSystemTestCase
   setup do
     @line_item = line_items(:one)
+    visit login_url
+    fill_in 'username', with: 'helen809'
+    fill_in 'password', with: 'afsa3234sdf'
+    click_on 'Login'   
   end
 
   test "visiting the index" do
