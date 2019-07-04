@@ -34,7 +34,7 @@ class AttemptsController < ApplicationController
   # PATCH/PUT /attempts/1.json
   def update
     respond_to do |format|
-      if @attempt.update(attempt_params)
+      if @attempt.update(finished_attempt_params)
         format.html { redirect_to @attempt, notice: 'Attempt was successfully updated.' }
         format.json { render :show, status: :ok, location: @attempt }
       else

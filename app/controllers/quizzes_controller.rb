@@ -27,6 +27,7 @@ class QuizzesController < ApplicationController
   def create
     @quiz = Quiz.new(quiz_params)
     @quiz.user_id = session[:user_id]
+    binding.pry 
 
     respond_to do |format|
       if @quiz.save
@@ -78,10 +79,6 @@ class QuizzesController < ApplicationController
       end 
     end   
   end
-
-  def question_params
-    params.require(:question).permit(:question, :option_a, :option_b, :option_c, :answer, :quiz_id) 
-  end
   
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -91,6 +88,6 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:title, :description, :user_id, :difficulty_level, :language_learning, :instruction_language)
+      params.require(:quiz).permit(:title, :description, :user_id, :difficulty_level, :language_learning, :instruction_language, questions_attributes: [:question, :option_a, :option_b, :option_c, :answer, :quiz_id])
     end
 end

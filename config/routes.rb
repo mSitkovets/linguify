@@ -7,14 +7,13 @@ Rails.application.routes.draw do
   end
 
   
+  resources :questions
+  resources :users
   resources :friendships
   resources :comments
-  resources :questions
   resources :quizzes do
     resources :attempts
   end
-  
-  resources :users
 
   scope '(:locale)' do 
     resources :quizzes do
