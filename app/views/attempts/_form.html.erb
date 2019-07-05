@@ -5,12 +5,12 @@
   <% @attempt.quiz.questions.each do |question| %>
     <h2>Q<%=counter%>: <%= question.question%></h2>
     <% @answers[0].each do |answer| %>
-      <input type="radio"> <%= answer[0] %> <br>
+      <input type="radio" name=quiz[questions_attributes][][question]> <%= answer[0] %> <br>
     <% end %>
     <% counter +=1 %>
     <% @answers.shift %>
   <% end %>
   <div class="actions">
-    <%= form.submit "Submit Quiz"%> 
+    <%= form.submit "Submit Quiz", remote: true%> 
   </div>
 <% end %>

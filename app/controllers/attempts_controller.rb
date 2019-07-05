@@ -37,8 +37,10 @@ class AttemptsController < ApplicationController
   def update
     respond_to do |format|
       if @attempt.update(finished_attempt_params)
-        format.html { redirect_to @attempt, notice: 'Attempt was successfully updated.' }
-        format.json { render :show, status: :ok, location: @attempt }
+        # @attempt.score = Attempt.calcScore()
+        # binding.pry
+        format.js
+        format.html { redirect_to quiz_attempt_url, notice: 'Attempt was successfully updated.' }
       else
         format.html { render :edit }
         format.json { render json: @attempt.errors, status: :unprocessable_entity }
@@ -68,6 +70,6 @@ class AttemptsController < ApplicationController
     end
 
     def finished_attempt_params
-      params.require(:attempt).permit(:score)
+      params.require(:attempt).permit(questions_attributes: [:question, :option_a, :option_b, :option_c, :answer, :quiz_id])#needs to be inputs to radio buttons
     end
 end
