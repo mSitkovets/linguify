@@ -18,8 +18,8 @@
         <td><%= attempt.quiz_id %></td>
         <td><%= attempt.user_id %></td>
         <td><%= attempt.score %></td>
-        <td><%= link_to 'Show', quiz_attempt_url(quiz_id: quiz_id) %></td>
-        <td><%= link_to 'Edit', edit_quiz_attempt_path(attempt) %></td>
+        <td><%= link_to 'Show', quiz_attempts_url %></td>
+        <td><%= link_to 'Edit', edit_quiz_attempt_url %></td>
         <td><%= link_to 'Destroy', quiz_attempt_url, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

@@ -36,11 +36,11 @@ class AttemptsController < ApplicationController
   # PATCH/PUT /attempts/1.json
   def update
     respond_to do |format|
-      if @attempt.update(finished_attempt_params)
-        # @attempt.score = Attempt.calcScore()
-        # binding.pry
-        format.js
-        format.html { redirect_to quiz_attempt_url, notice: 'Attempt was successfully updated.' }
+      answer = finished_attempt_params
+      score = Attempt.calcScore(answer, @attempt.quiz.questions)
+
+      if @attempt.update(score: score)
+        format.html { redirect_to quiz_attempt_url, notice: 'Your quiz results:' }
       else
         format.html { render :edit }
         format.json { render json: @attempt.errors, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class AttemptsController < ApplicationController
   def destroy
     @attempt.destroy
     respond_to do |format|
-      format.html { redirect_to attempts_url, notice: 'Attempt was successfully destroyed.' }
+      format.html { redirect_to quiz_attempts_url, notice: 'Attempt was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -70,6 +70,6 @@ class AttemptsController < ApplicationController
     end
 
     def finished_attempt_params
-      params.require(:attempt).permit(questions_attributes: [:question, :option_a, :option_b, :option_c, :answer, :quiz_id])#needs to be inputs to radio buttons
+      params.permit(answers: {})
     end
 end

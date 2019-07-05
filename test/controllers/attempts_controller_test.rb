@@ -6,7 +6,7 @@ class AttemptsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get quiz_attempts_url
+    get quiz_attempts_url(id: @attempt.id, quiz_id: @attempt.quiz_id)
     assert_response :success
   end
 
@@ -16,23 +16,23 @@ class AttemptsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should show attempt" do
-    get quiz_attempt_url
+    get quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_quiz_attempt_url
+    get edit_quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id)
     assert_response :success
   end
 
   test "should update attempt" do
-    patch quiz_attempt_url, params: { attempt: { quiz_id: @attempt.quiz_id, score: @attempt.score, user_id: @attempt.user_id } }
+    patch quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id), params: { attempt: { quiz_id: @attempt.quiz_id, score: @attempt.score, user_id: @attempt.user_id } }
     assert_redirected_to quiz_attempt_url
   end
 
   test "should destroy attempt" do
     assert_difference('Attempt.count', -1) do
-      delete quiz_attempt_url
+      delete quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id)
     end
 
     assert_redirected_to quiz_attempts_url
