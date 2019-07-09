@@ -26,8 +26,8 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
-    quiz = Quiz.find(params[:quiz_id])
-    @line_item = @list.add_quiz(quiz)
+    @quiz = Quiz.find(params[:quiz_id])
+    @line_item = @list.add_quiz(@quiz)
 
     respond_to do |format|
       if @line_item.save

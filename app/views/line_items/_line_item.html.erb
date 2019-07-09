@@ -3,7 +3,8 @@
 <% else %>
 <tr>
 <% end %>
-  <td><%= line_item.quiz.title %></td>
+
+  <td><%=link_to "#{line_item.quiz.title}", new_quiz_attempt_path(line_item.quiz.id), method: :get, class: "new_quiz" %></td>
   <td class="language"><%= line_item.quiz.language_learning %></td>
   <td><%= link_to t('.remove'), line_item, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
 </tr>
