@@ -26,7 +26,7 @@ class AttemptsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update attempt" do
-    patch quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id), params: { attempt: { quiz_id: @attempt.quiz_id, score: @attempt.score, user_id: @attempt.user_id } }
+    patch quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id), params: { answers: {} }
     assert_redirected_to quiz_attempt_url
   end
 

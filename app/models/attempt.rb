@@ -7,13 +7,17 @@ class Attempt < ApplicationRecord
   def self.calcScore(user_answers, questions)
     i = 1
     score = 0
-    questions.each do |question|
-       if (question.answer == user_answers[:answers]["Q#{i}".to_sym])
-        score+=1
-       end
-       i+=1
-    end
-    
-    score = ((score / Float(i-1)) * 100).to_i
+    if(user_answers.empty?)
+      score = 0
+    else
+      questions.each do |question|
+        if (question.answer == user_answers[:answers]["Q#{i}".to_sym])
+         score+=1
+        end
+        i+=1
+     end
+     score = ((score / Float(i-1)) * 100).to_i
+    end  
+    score
   end
 end

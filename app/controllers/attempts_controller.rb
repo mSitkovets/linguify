@@ -28,10 +28,6 @@ class AttemptsController < ApplicationController
     @quiz = @attempt.quiz
   end 
 
-  # GET /attempts/1/edit
-  def edit
-  end
-
   # PATCH/PUT /attempts/1
   # PATCH/PUT /attempts/1.json
   def update
