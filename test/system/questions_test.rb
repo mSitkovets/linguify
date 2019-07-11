@@ -4,29 +4,14 @@ class QuestionsTest < ApplicationSystemTestCase
   setup do
     @question = questions(:one)
     visit login_url
-    fill_in 'username', with: 'helen809'
-    fill_in 'password', with: 'afsa3234sdf'
-    click_on 'Login'   
+    fill_in 'username', with: 'dave'
+    fill_in 'password', with: 'secret'
+    click_on 'Login'  
   end
 
   test "visiting the index" do
     visit questions_url
     assert_selector "h1", text: "Questions"
-  end
-
-  test "creating a Question" do
-    visit questions_url
-    click_on "New Question"
-
-    fill_in "Answer", with: @question.answer
-    fill_in "Option a", with: @question.option_a
-    fill_in "Option b", with: @question.option_b
-    fill_in "Option c", with: @question.option_c
-    fill_in "Question", with: @question.question
-    click_on "Create Question"
-
-    assert_text "Question was successfully created"
-    click_on "Back"
   end
 
   test "updating a Question" do

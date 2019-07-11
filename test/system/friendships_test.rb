@@ -2,11 +2,11 @@ require "application_system_test_case"
 
 class FriendshipsTest < ApplicationSystemTestCase
   setup do
-    @friendship = friendships(:one)
+    @friendship = friendships(:two )
     visit login_url
-    fill_in 'username', with: 'helen809'
-    fill_in 'password', with: 'afsa3234sdf'
-    click_on 'Login'   
+    fill_in 'username', with: 'dave'
+    fill_in 'password', with: 'secret'
+    click_on 'Login'    
   end
 
   test "visiting the index" do
@@ -23,19 +23,6 @@ class FriendshipsTest < ApplicationSystemTestCase
     click_on "Create Friendship"
 
     assert_text "Friendship was successfully created"
-    click_on "Back"
-  end
-
-  test "updating a Friendship" do
-    visit friendships_url
-    click_on "Edit", match: :first
-
-    fill_in "Friend", with: @friendship.friend_id
-    fill_in "User", with: @friendship.user_id
-    click_on "Update Friendship"
-
-    assert_text "Friendship was successfully updated"
-    click_on "Back"
   end
 
   test "destroying a Friendship" do

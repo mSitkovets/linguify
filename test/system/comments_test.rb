@@ -4,8 +4,8 @@ class CommentsTest < ApplicationSystemTestCase
   setup do
     @comment = comments(:one)
     visit login_url
-    fill_in 'username', with: 'helen809'
-    fill_in 'password', with: 'afsa3234sdf'
+    fill_in 'username', with: 'dave'
+    fill_in 'password', with: 'secret'
     click_on 'Login'   
   end
 

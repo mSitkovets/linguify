@@ -4,9 +4,9 @@ class ListsTest < ApplicationSystemTestCase
   setup do
     @list = lists(:one)
     visit login_url
-    fill_in 'username', with: 'helen809'
-    fill_in 'password', with: 'afsa3234sdf'
-    click_on 'Login'   
+    fill_in 'username', with: 'dave'
+    fill_in 'password', with: 'secret'
+    click_on 'Login'  
   end
 
   test "visiting the index" do
@@ -21,7 +21,6 @@ class ListsTest < ApplicationSystemTestCase
     click_on "Create List"
 
     assert_text "List was successfully created"
-    click_on "Back"
   end
 
   test "updating a List" do
@@ -30,8 +29,7 @@ class ListsTest < ApplicationSystemTestCase
 
     click_on "Update List"
 
-    assert_text "List was successfully updated"
-    click_on "Back"
+    assert_text "List was successfully updated."
   end
 
   test "destroying a List" do
@@ -40,6 +38,6 @@ class ListsTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "List was successfully destroyed"
+    assert_text "Your list is currently empty."
   end
 end

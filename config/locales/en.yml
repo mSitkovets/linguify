@@ -36,7 +36,7 @@ en:
       home: "Home"
   explore:
     index:
-      title_html: "Search Through Quizzes" 
+      title_html: "Find A Quiz!" 
       play_html: "Play Now"
       add_html: "Add to Play Later"
   lists: 

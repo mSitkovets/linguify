@@ -5,7 +5,7 @@ es:
       home: "Inicio"
   explore:
     index:
-      title_html: "Buscar a Través de Pruebas" 
+      title_html: "Encontrar una Prueba!" 
       play_html: "Reproducir Ahora"
       add_html: "Añadir a Jugar más Tarde"
   lists: 

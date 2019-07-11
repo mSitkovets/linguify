@@ -4,9 +4,9 @@ class LineItemsTest < ApplicationSystemTestCase
   setup do
     @line_item = line_items(:one)
     visit login_url
-    fill_in 'username', with: 'helen809'
-    fill_in 'password', with: 'afsa3234sdf'
-    click_on 'Login'   
+    fill_in 'username', with: 'dave'
+    fill_in 'password', with: 'secret'
+    click_on 'Login'    
   end
 
   test "visiting the index" do
@@ -19,11 +19,10 @@ class LineItemsTest < ApplicationSystemTestCase
     click_on "New Line Item"
 
     fill_in "List", with: @line_item.list_id
-    fill_in "Quiz", with: @line_item.quiz_id
+    fill_in "Quiz", with: @line_item.quiz.title
     click_on "Create Line item"
 
     assert_text "Line item was successfully created"
-    click_on "Back"
   end
 
   test "updating a Line item" do
@@ -34,8 +33,7 @@ class LineItemsTest < ApplicationSystemTestCase
     fill_in "Quiz", with: @line_item.quiz_id
     click_on "Update Line item"
 
-    assert_text "Line item was successfully updated"
-    click_on "Back"
+    assert_text "Quiz was successfully updated."
   end
 
   test "destroying a Line item" do
@@ -44,6 +42,6 @@ class LineItemsTest < ApplicationSystemTestCase
       click_on "Destroy", match: :first
     end
 
-    assert_text "Line item was successfully destroyed"
+    assert_text "Quiz was successfully destroyed."
   end
 end

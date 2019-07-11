@@ -4,3 +4,6 @@ one:
   user: one
   friend: two
 
+two:
+  user: two
+  friend: three

@@ -4,8 +4,8 @@ class QuizzesTest < ApplicationSystemTestCase
   setup do
     @quiz = quizzes(:one)
     visit login_url
-    fill_in 'username', with: 'helen809'
-    fill_in 'password', with: 'afsa3234sdf'
+    fill_in 'username', with: 'dave'
+    fill_in 'password', with: 'secret'
     click_on 'Login'    
   end
 
@@ -19,7 +19,7 @@ class QuizzesTest < ApplicationSystemTestCase
     click_on "New Quiz"
 
     fill_in "Description", with: @quiz.description
-    fill_in "Difficulty level", with: @quiz.difficulty_level
+    select 'Beginner', from: "difficulty_level"
     fill_in "Title", with: @quiz.title
     fill_in "User", with: @quiz.user_id
     click_on "Create Quiz"
@@ -33,7 +33,7 @@ class QuizzesTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Description", with: @quiz.description
-    fill_in "Difficulty level", with: @quiz.difficulty_level
+    select 'Beginner', from: 'difficulty_level'
     fill_in "Title", with: @quiz.title
     fill_in "User", with: @quiz.user_id
     click_on "Update Quiz"
