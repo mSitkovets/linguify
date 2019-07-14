@@ -9,6 +9,7 @@ jerry = User.create(:username => 'jerry123', :password => 'jyt456hh', :email => 
 rima = User.create(:username => 'rima456', :password => 'rjelks2348', :email => 'rima@hotmail.com')
 darshil = User.create(:username => 'darshil378', :password => 'afsa3234fa', :email => 'darshil@gmail.ca')
 helen = User.create(:username => 'helen809', :password => 'afsa3234sdf', :email => 'helen@gmail.ca')
+admin = User.create(:username => 'admin1', :password => 'hello123',:email => 'admin1@gmail.com', :user_type => 1)
 
 drinks_in_russian = Quiz.create(:title => 'Drinks in Russian', :description => 'Learn how to say the names of all your favourite drinks!', :user_id => helen.id, :difficulty_level => 0, :language_learning => 3, :instruction_language => 0)
 animals_in_russian = Quiz.create(:title => 'Animals in Russian', :description => 'Learn how to say the names of all your favourite animals!', :user_id => helen.id, :difficulty_level => 0, :language_learning => 3, :instruction_language => 0)
