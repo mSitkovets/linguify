@@ -37,10 +37,22 @@
         <ul>
           <li><a href="/"><%= t('.home') %></a></li>
         </ul>
-        <% if session[:user_id] %> 
-          <nav class="logged_in_nav">
+        <% if session[:user_id] && User.find(session[:user_id]).user_type == 0 %> 
+          <nav class="logged_in_nav_regular">
           <ul>
             <li><%= link_to 'Your Quizzes', quizzes_path(locale: I18n.locale) %></li> 
+            <li><%= button_to 'Logout', logout_path, method: :delete  %></li>
+          </ul>
+      </nav>
+      <% end %>
+      <% if session[:user_id] && User.find(session[:user_id]).user_type == 1 %> 
+          <nav class="logged_in_nav_admin">
+          <ul>
+            <li><%= link_to 'Users', users_path(locale: I18n.locale) %></li>
+            <li><%= link_to 'Quizzes', quizzes_path(locale: I18n.locale) %></li>
+            <li><%= link_to 'Attempts', quiz_attempts_path(Quiz.first) %></li>
+            <li><%= link_to 'Friendships', friendships_path(locale: I18n.locale) %></li>
+            <li><%= link_to 'Comments', comments_path(locale: I18n.locale) %></li> 
             <li><%= button_to 'Logout', logout_path, method: :delete  %></li>
           </ul>
       </nav>

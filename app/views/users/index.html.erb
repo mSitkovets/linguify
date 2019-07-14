@@ -8,7 +8,6 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Password</th>
       <th>Email</th>
       <th colspan="3"></th>
     </tr>
@@ -18,7 +17,6 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= user.password %></td>
         <td><%= user.email %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
@@ -28,7 +26,7 @@
   </tbody>
 </table>
 
-<%= link_to 'New User', new_user_path %>
+<a href = "/users/new" class = "button">New User</a>
 
 <h1>Users Following the Most People</h1>
 
@@ -78,7 +76,6 @@
   <thead>
     <tr>
       <th>Username</th>
-      <th>Password</th>
       <th>Email</th>
       <th colspan="3"></th>
     </tr>
@@ -88,7 +85,6 @@
     <% @most_recent_to_add_friend.each do |user| %>
       <tr>
         <td><%= user.username %></td>
-        <td><%= user.password %></td>
         <td><%= user.email %></td>
       </tr>
     <% end %>

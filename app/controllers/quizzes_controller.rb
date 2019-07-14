@@ -6,6 +6,7 @@ class QuizzesController < ApplicationController
   def index
     @quizzes = Quiz.all
     @quizzes_per_language = Quiz.select(:language_learning).group(:language_learning).count(:language_learning)
+    @specific_users_quizzes = Quiz.where(:user_id == User.find(session[:user_id]))
   end
 
   # GET /quizzes/1
