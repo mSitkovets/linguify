@@ -8,7 +8,7 @@
     <th><%= t('.quiz') %></th>
     <th><%= t('.language') %></th>
   </tr> 
-  <%= render(list.line_items, @quiz) %>  
+  <%= render(list.line_items) %>  
 </table>
 <%= button_to t('.empty'), list,
   method: :delete,

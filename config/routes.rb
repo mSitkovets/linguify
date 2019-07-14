@@ -14,11 +14,12 @@ Rails.application.routes.draw do
   resources :quizzes do
     resources :attempts
   end
+  resources :quizzes do
+    get :who_created, on: :member
+  end
 
   scope '(:locale)' do 
-    resources :quizzes do
-      get :who_created, on: :member
-    end
+    resources :quizzes 
     resources :line_items
     resources :lists
      
