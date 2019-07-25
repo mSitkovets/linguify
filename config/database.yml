@@ -52,3 +52,9 @@ production:
   database: dev-degree-rails-project-mSitkovets_production
   username: dev-degree-rails-project-mSitkovets
   password: <%= ENV['DEV-DEGREE-RAILS-PROJECT-MSITKOVETS_DATABASE_PASSWORD'] %>
+
+<% if ENV['DATABASE_URL'] %>
+staging:
+  <<: *default
+  url: "<%= ENV['DATABASE_URL'] %>"
+<% end %>
