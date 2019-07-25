@@ -1,0 +1,76 @@
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+
+<h1>Attempts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Quiz</th>
+      <th>User</th>
+      <th>Score</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attempts.each do |attempt| %>
+      <tr>
+        <td><%= attempt.quiz_id %></td>
+        <td><%= attempt.user_id %></td>
+        <td><%= attempt.score %></td>
+        <td><%= link_to 'Show', quiz_attempt_url(id: attempt.id, quiz_id: attempt.quiz_id) %></td>
+        <td><%= link_to 'Edit', edit_quiz_attempt_url(id: attempt.id, quiz_id: attempt.quiz_id) %></td>
+        <td><%= link_to 'Destroy', quiz_attempt_url(id: attempt.id, quiz_id: attempt.quiz_id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Average Score Per User</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Average Score</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @average_score_per_user.each do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h1>Top 3 Scoring Quizzes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Average User Score</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @average_score_per_quiz.each do |key, value| %>
+      <tr>
+        <td><%= key %></td>
+        <td><%= value %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+

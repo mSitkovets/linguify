@@ -1,0 +1,72 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+en:
+  layouts:
+    application:
+      title: "Hanji-Go"
+      home: "Home"
+  explore:
+    index:
+      title_html: "Find A Quiz!" 
+      play_html: "Play Now"
+      add_html: "Add to Play Later"
+  lists: 
+    list:
+      title: "Your Play Later List"
+      quiz: "Quiz"
+      language: "Language"
+      empty: "Empty list"
+  line_items:
+    line_item:
+      remove: "Remove"
+  quizzes: 
+    new:
+      legend: "Please Enter Information About Your Quiz"
+    form: 
+      title: "Title"
+      description: "Description"
+      language_learning: "Language Learning"
+      instruction_language: "Instruction Language"
+      difficulty_level: "Difficulty Level"
+      language_select: "Select a language"
+      level_select: "Select a level"
+      submit: "Create Quiz"
+      add_question: "Add Question"
+      add_question_type:
+        question: "Question"
+        option_a: "Option A"
+        option_b: "Option B"
+        option_c: "Option C"
+        answer: "Answer"
+  success: "You have successfully created a quiz"
+
+      

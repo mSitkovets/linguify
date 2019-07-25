@@ -1,0 +1,46 @@
+<%= form_with(model: quiz, local: true) do |form| %>
+  <% if quiz.errors.any? %>
+    <div id="error_explanation">
+      <h2><%=raw t('errors.template.header', count: @quiz.errors.count,
+        model: t('activerecord.models.quiz')) %>.</h2> 
+      <p><%= t('errors.template.body') %></p>
+
+      <ul>
+      <% quiz.errors.full_messages.each do |message| %>
+        <li><%=raw message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title , t('.title')%>
+    <%= form.text_field :title, id: :quiz_title, size: 40 %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, t('.description') %>
+    <%= form.text_area :description, id: :quiz_description, rows: 3, cols: 40 %>
+  </div>
+
+  <div class="field">
+  <%= form.label :language_learning, t('.language_learning') %>
+  <%= form.select :language_learning, Quiz.language_learnings.keys, id: :quiz_language_learning, prompt: t('.language_select')  %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :instruction_language, t('.instruction_language') %>
+    <%= form.select :instruction_language, Quiz.instruction_languages.keys, id: :quiz_instruction_language, prompt: t('.language_select') %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :difficulty_level, t('.difficulty_level') %>
+    <%= form.select :difficulty_level, Quiz.difficulty_levels.keys, id: :quiz_difficulty_level, prompt: t('.level_select') %>
+  </div>
+
+  <div id='new-question-component'></div>
+
+  <div class="actions">
+    <%= form.submit t('.submit') %>
+  </div>
+<% end %>

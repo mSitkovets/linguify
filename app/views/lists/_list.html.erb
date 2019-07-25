@@ -1,0 +1,17 @@
+<article>
+<% if notice %>
+  <aside id="notice"><%= notice %></aside>
+<% end %>
+<h2><%= t('.title') %></h2>
+<table>
+  <tr>
+    <th><%= t('.quiz') %></th>
+    <th><%= t('.language') %></th>
+  </tr> 
+  <%= render(list.line_items) %>  
+</table>
+<%= button_to t('.empty'), list,
+  method: :delete,
+  data: { confirm: 'Are you sure?' } %>
+</article>
+
