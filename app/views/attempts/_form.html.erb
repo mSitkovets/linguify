@@ -5,14 +5,16 @@
   <% @attempt.quiz.questions.each do |question| %>
     <h2>Q<%=counter%>: <%= question.question%></h2>
     <% @answers[0].each do |answer| %>
-       <%= label_tag(:answer, answer[0]) %>
+       <div style= "display:flex; flex-direction: row;"> 
        <%= radio_button_tag("answers[Q#{counter}]".to_sym, answer[0]) %>
+       <%= label_tag(:answer, answer[0]) %>
+       </div>
     <% end %>
     <% counter += 1 %>
     <% @answers.shift %>
   <% end %>
   <div class="actions">
-    <%= form.submit "Submit Quiz", remote: true%> 
+    <%= form.submit "Submit Quiz", remote: true %> 
   </div>
 <% end %>
 
