@@ -1,0 +1,6 @@
+kubernetes:
+  namespace: dev-degree-rails-project-msitkovets-production-unrestricted
+  context: tier4-us-east1-2
+ci:
+  require:
+    - buildkite/dev-degree-rails-project-msitkovets-production-builder

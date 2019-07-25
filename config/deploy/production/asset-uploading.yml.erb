@@ -1,0 +1,63 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: upload-assets-<%= deployment_id %>
+  labels:
+    name: upload-assets-<%= deployment_id %>
+    type: command-runner
+    app: "dev-degree-rails-project-mSitkovets"
+    env: "production"
+spec:
+  activeDeadlineSeconds: 300
+  restartPolicy: Never
+  containers:
+  - name: command-runner
+    image: gcr.io/shopify-docker-images/apps/production/dev-degree-rails-project-msitkovets:<%= current_sha %>
+    args:
+    - "/exec"
+    - bin/rake
+    - cloudplatform:upload_assets
+    envFrom:
+    - configMapRef:
+        name: application-state
+    env:
+    - name: IS_CLOUD_ENV
+      value: 'true'
+    - name: JEMALLOC_ENABLED
+      value: 'true'
+    - name: RAILS_ENV
+      value: "production"
+    - name: PORT
+      value: '8000'
+    - name: DATABASE_URL
+      valueFrom:
+        secretKeyRef:
+          name: database-url
+          key: DATABASE_URL
+    - name: NODE_NAME
+      valueFrom:
+        fieldRef:
+          fieldPath: spec.nodeName
+    - name: NODE_IP
+      valueFrom:
+        fieldRef:
+          fieldPath: status.hostIP
+    - name: STATSD_ADDR
+      value: 127.0.0.1:8125
+    - name: STATSD_IMPLEMENTATION
+      value: datadog
+    volumeMounts:
+    - name: ejson-keys
+      mountPath: "/key"
+      readOnly: true
+    resources:
+      requests:
+        cpu: 500m
+      limits:
+        cpu: 1000m
+        memory: 2Gi
+  volumes:
+  - name: ejson-keys
+    secret:
+      secretName: ejson-keys
