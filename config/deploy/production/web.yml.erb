@@ -15,10 +15,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - "dev-degree-rails-project-mSitkovets.shopifycloud.com"
+    - "dev-degree-rails-project-msitkovets.shopifycloud.com"
     secretName: dev-degree-rails-project-mSitkovets-shopifycloud-com
   rules:
-  - host: "dev-degree-rails-project-mSitkovets.shopifycloud.com"
+  - host: "dev-degree-rails-project-msitkovets.shopifycloud.com"
     http:
       paths:
       - backend:
@@ -38,13 +38,13 @@ spec:
     name: letsencrypt-issuer
     kind: ClusterIssuer
   dnsNames:
-  - dev-degree-rails-project-mSitkovets.shopifycloud.com
+  - dev-degree-rails-project-msitkovets.shopifycloud.com
   acme:
     config:
     - http01:
         ingressClass: nginx
       domains:
-      - dev-degree-rails-project-mSitkovets.shopifycloud.com
+      - dev-degree-rails-project-msitkovets.shopifycloud.com
 ---
 apiVersion: v1
 kind: Service
@@ -212,7 +212,7 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: SERVER_NAME
-          value: "dev-degree-rails-project-mSitkovets.shopifycloud.com"
+          value: "dev-degree-rails-project-msitkovets.shopifycloud.com"
         - name: WEB_SERVICE_HOST
           value: 127.0.0.1:8000
         - name: TEMPLATE_TYPE
