@@ -21,6 +21,8 @@
 }
 header.main {
   text-align: center;
+  position: relative;
+
   @media(min-width: 30em){
     text-align: left; // left align on desktop }
   } // center on mobile @media (min-width: 30em) {
