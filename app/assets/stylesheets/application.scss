@@ -26,10 +26,19 @@ header.main {
   @media(min-width: 30em){
     text-align: left; // left align on desktop }
   } // center on mobile @media (min-width: 30em) {
-  background: #FCCF4D;
+  background: #5563c1;
   margin: 0;
   h1 {
     display: none;
+  }
+  img {
+    object-fit: cover;
+    width: 120px;
+    height: 120px;
+  }
+
+  a{
+    color: white;
   }
 }
 
@@ -47,7 +56,7 @@ header.main {
   }
   nav {
     padding-bottom: 1em;
-    background: #00848E;
+    background: #F4F5FA;
     text-align: center;
      // mobile has centered nav @media (min-width: 30em) {
     @media (min-width: 30em){
@@ -68,12 +77,12 @@ header.main {
       text-transform: uppercase; 
       letter-spacing: 0.354em; 
       a{
-        color: #e0e9e8;
+        color: #637381;
         text-decoration: none;
       }
       a:hover {
         background: none;
-        color: white;
+        color: #202E78;
       }
     } 
   }
@@ -95,22 +104,20 @@ main {
 }
 
 nav.logged_in_nav_regular, nav.logged_in_nav_admin { 
-  border-top: solid thin #B7ECEC; 
+  border-top: solid thin #454F5B; 
   padding: 0.354em 0; 
   margin-top: 0.354em;
   input[type="submit"] {
   // Make the logout button look like a // link, so it matches the nav style background: none;
   border: none;
-      color: #003135;
+     
       font-size: 1em;
       letter-spacing: 0.354em;
       margin: 0;
       padding: 0;
       text-transform: uppercase;
   }
-  input[type="submit"]:hover {
-      color: white;
-    }
+
   }
 
   #list {

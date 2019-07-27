@@ -25,7 +25,7 @@
     } 
   }
 
-  form, div {
+  form {
     display: inline;
   }
 
@@ -40,4 +40,9 @@
   input[type="submit"]:hover {
     background-color: #00848E;
   }
+  .Polaris-Button--primary {
+    margin-top: 2%;
+    margin-right: 2%;
+  }
 }   
+

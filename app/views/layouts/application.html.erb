@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hanji-Go</title>
+    <title>Linguify</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.18.0/polaris.min.css"/>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
+    <link rel="stylesheet" href="https://sdks.shopifycdn.com/polaris/3.20.0/polaris.min.css"/>
     <script type="text/javascript">
       I18n.defaultLocale = "<%= I18n.default_locale %>"; 
       I18n.locale = "<%= I18n.locale %>";
@@ -45,7 +47,7 @@
           <nav class="logged_in_nav_regular">
           <ul>
             <li><%= link_to 'Profile', quizzes_path(locale: I18n.locale) %></li> 
-            <li><%= button_to 'Logout', logout_path, method: :delete  %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete  %></li>
           </ul>
       </nav>
       <% end %>
@@ -57,7 +59,7 @@
             <li><%= link_to 'Attempts', quiz_attempts_path(Quiz.first) %></li>
             <li><%= link_to 'Friendships', friendships_path(locale: I18n.locale) %></li>
             <li><%= link_to 'Comments', comments_path(locale: I18n.locale) %></li> 
-            <li><%= button_to 'Logout', logout_path, method: :delete  %></li>
+            <li><%= link_to 'Logout', logout_path, method: :delete  %></li>
           </ul>
       </nav>
       <% end %>

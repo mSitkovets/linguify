@@ -5,8 +5,13 @@ class QuizzesController < ApplicationController
   # GET /quizzes.json
   def index
     @quizzes = Quiz.all
+    # @quizzes2 = 'hi'
+    # @quizzes.each do |quiz|
+    #   @quizzes2 << new_quiz_attempt_path(quiz_id: quiz.id)
+    # end 
     @quizzes_per_language = Quiz.select(:language_learning).group(:language_learning).count(:language_learning)
     @specific_users_quizzes = Quiz.where(:user_id == User.find(session[:user_id]))
+    @specifc_users_attempts = Attempt.where(:user_id == User.find(session[:user_id]))
   end
 
   # GET /quizzes/1

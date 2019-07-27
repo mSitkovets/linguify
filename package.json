@@ -3,10 +3,12 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "3.5",
+    "@shopify/polaris": "^3.20.0",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "react_ujs": "^2.5.0"
   },
   "devDependencies": {
     "webpack-dev-server": "2.11.2"
