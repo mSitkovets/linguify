@@ -1,31 +1,48 @@
-import React from "react"
-import PropTypes from "prop-types"
-import QuizItem from './QuizItem'
-import {AppProvider, Page, Layout} from '@shopify/polaris'
+import React from "react";
+import PropTypes from "prop-types";
+import QuizItem from "./QuizItem";
+import { AppProvider, Page, Banner } from "@shopify/polaris";
 
 class QuizList extends React.Component {
-  render () {
+  constructor(props) {
+    super(props);
+    this.state = {
+      addWarning: false
+    };
+    this.displayWarningBanner = this.displayWarningBanner.bind(this);
+  }
+
+  displayWarningBanner() {
+    this.setState({
+      addWarning: true
+    });
+  }
+  render() {
     console.log(this.props);
-    const quizzes = this.props.quizzes.map((item, key) => (
-      <QuizItem quiz={item} key={key}/>
+    const quizzes = this.props.quizzes.map((quiz, key) => (
+      <QuizItem
+        displayWarningBanner={this.displayWarningBanner}
+        quiz={quiz}
+        key={key}
+      />
     ));
+
+    const warningBanner = this.state.addWarning ? (
+      <Banner title="This quiz is already in your list." status="warning" />
+    ) : null;
 
     return (
       <AppProvider>
-        <Page title='Find a Quiz'>
-          <Layout>
-        <Layout.Section>
-          {quizzes}
-        </Layout.Section>
-        </Layout>
-        </Page>
+        <div>
+          {warningBanner}
+          <Page title="Find a Quiz">{quizzes}</Page>
+        </div>
       </AppProvider>
     );
-    
   }
 }
 
 QuizList.propTypes = {
   quizzes: PropTypes.array
 };
-export default QuizList
+export default QuizList;

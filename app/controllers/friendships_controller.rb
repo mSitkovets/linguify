@@ -4,7 +4,7 @@ class FriendshipsController < ApplicationController
   # GET /friendships
   # GET /friendships.json
   def index
-    @friendships = Friendship.all
+    @friendships = Friendship.all.pluck(:user_id, :friend_id, :id)
   end
 
   # GET /friendships/1

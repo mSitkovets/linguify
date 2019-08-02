@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :answers
   get 'admin' => 'admin#index'
   controller :sessions do
     get 'login' => :new
@@ -16,6 +17,9 @@ Rails.application.routes.draw do
   end
   resources :quizzes do
     get :who_created, on: :member
+  end
+  resources :quizzes do 
+    get :search
   end
 
   scope '(:locale)' do 

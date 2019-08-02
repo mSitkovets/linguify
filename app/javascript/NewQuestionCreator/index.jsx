@@ -2,7 +2,10 @@ import React from 'react'
 import AddQuestionType from './AddQuestionType';
 class NewQuestionCreator extends React.Component { 
 
-  state = { appendedCompsCount: 0 };
+  state = { 
+    appendedCompsCount: 0 
+  };
+
   addQuestion = () => {
     event.preventDefault();
     this.setState({
@@ -11,7 +14,7 @@ class NewQuestionCreator extends React.Component {
   }
    
   getAppendedComponents = () => {
-    let appendedComponents = [];
+    const appendedComponents = [];
     for (let i = 0; i < this.state.appendedCompsCount; i++) {
        appendedComponents.push(
          <AddQuestionType key={i} />
@@ -21,13 +24,10 @@ class NewQuestionCreator extends React.Component {
   }
 
   render() {
-
     return (
       <div className="field">
-
         {this.getAppendedComponents()}
         <button onClick={this.addQuestion}>{I18n.t("quizzes.form.add_question")}</button> 
-        
       </div>
     );
 

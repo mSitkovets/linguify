@@ -1,19 +1,15 @@
 class QuizzesController < ApplicationController
-  before_action :set_quiz, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
+  before_action :set_quiz, only: [:show, :edit, :update, :destroy, :search]
 
   # GET /quizzes
   # GET /quizzes.json
   def index
     @quizzes = Quiz.all
-    # @quizzes2 = 'hi'
-    # @quizzes.each do |quiz|
-    #   @quizzes2 << new_quiz_attempt_path(quiz_id: quiz.id)
-    # end 
-    @quizzes_per_language = Quiz.select(:language_learning).group(:language_learning).count(:language_learning)
-    @specific_users_quizzes = Quiz.where(:user_id == User.find(session[:user_id]))
-    @specifc_users_attempts = Attempt.where(:user_id == User.find(session[:user_id]))
+    @quizzes_per_language = Quiz.group(:language_learning).pluck(:language_learning, "count(quizzes.language_learning)")
+    @specific_users_quizzes = Quiz.where(:user_id == User.find(session[:user_id])).joins(:attempts).group(:quiz_id).pluck(:title, :language_learning, :difficulty_level, "count(quizzes.id)", "avg(attempts.score)",:quiz_id)
+    @specific_users_stats = Quiz.joins(:attempts).where("attempts.user_id=?", "#{session[:user_id]}").group(:quiz_id).pluck(:title, :language_learning, :difficulty_level, "count(quizzes.id)", "avg(attempts.score)")
   end
-
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
@@ -84,7 +80,16 @@ class QuizzesController < ApplicationController
       end 
     end   
   end
-  
+
+  def search 
+    @quizzes = Quiz.search(params[:query])
+    if request.xhr?
+      render :json => @quizzes.to_json
+    else 
+      render :index
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_quiz

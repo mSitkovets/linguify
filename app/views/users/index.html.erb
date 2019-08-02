@@ -2,94 +2,9 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<a href = "/users/new" class = "fake_button">New User</a>
-
-<h1>Users Following the Most People</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Num of Users Following</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @most_following_users.each do |key, value| %>
-      <tr>
-        <td><%= key %></td>
-        <td><%= value %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h1>Most Followed Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Num of Followers</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @most_followed_users.each do |key, value| %>
-      <tr>
-        <td><%= key %></td>
-        <td><%= value %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h1>Users Who Most Recently Made a New Friend</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @most_recent_to_add_friend.each do |user| %>
-      <tr>
-        <td><%= user.username %></td>
-        <td><%= user.email %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+<%= react_component("table/TableWithLinks", { quizzes: @users, title: 'Users', columnContentTypes: ['text','text'], headings: ['Username','Email'], url: 'https://dev-degree-rails-project-msitkovets.myshopify.io/users'}) %>
+<%= react_component("PolarisButton", { text: 'Create New User', url: 'https://dev-degree-rails-project-msitkovets.myshopify.io/users/new'}) %>
+<%= react_component("table/Table", { rows: @most_following_users, title: 'Users Following the Most People', columnContentTypes: ['text','numeric'], headings: ['Username','Num of Users Following']}) %>
+<%= react_component("table/Table", { rows: @most_followed_users, title: 'Most Followed Users', columnContentTypes: ['text','numeric'], headings: ['Username','Num of Followers']}) %>
 
 

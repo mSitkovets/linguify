@@ -3,110 +3,13 @@
 <% end %>
 
 <% if session[:user_id] && User.find(session[:user_id]).user_type == 1 %> 
-<h1>Quizzes</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>User</th>
-      <th>Difficulty level</th>
-      <th>Attempts</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @quizzes.each do |quiz| %>
-      <tr>
-        <td><%= quiz.title %></td>
-        <td><%= quiz.description %></td>
-        <td><%= quiz.user_id %></td>
-        <td><%= quiz.difficulty_level %></td>
-        <td><%= link_to 'Show', quiz %></td>
-        <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
-        <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= button_to 'New Quiz', new_quiz_path(locale: I18n.locale), method: :get, class: "new_quiz" %>
-
-<h1>Number of Quizzes per Language</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Language</th>
-      <th>Number of Quizzes</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @quizzes_per_language.each do |key, value| %>
-      <tr>
-        <td><%= key %></td>
-        <td><%= value %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+  <%= react_component("table/TableWithLinks", { quizzes: @specific_users_quizzes, title: 'Quizzes', columnContentTypes: ['text','text','numeric','text'], headings: ['Title','Description', 'User ID', 'Difficulty Level'], url: 'https://dev-degree-rails-project-msitkovets.myshopify.io/quizzes'}) %>
+  <%= react_component("table/Table", { rows: @quizzes_per_language, title: 'Number of Quizzes per Language', columnContentTypes: ['text','numeric'], headings: ['Language', 'Number of Quizzes']}) %>
 <% elsif User.find(session[:user_id]).user_type == 0 %>
-<h1>Quizzes Created by You</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Language</th>
-      <th>Difficulty level</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @specific_users_quizzes.each do |quiz| %>
-      <tr>
-        <td><%= quiz.title %></td>
-        <td><%= quiz.description %></td>
-        <td><%= quiz.language_learning %></td>
-        <td><%= quiz.difficulty_level %></td>
-        <td><%= link_to 'Show', quiz %></td>
-        <td><%= link_to 'Edit', edit_quiz_path(quiz) %></td>
-        <td><%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<h1>Your Stats</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Language</th>
-      <th>Difficulty level</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @specific_users_quizzes.each do |quiz| %>
-      <tr>
-        <td><%= quiz.title %></td>
-        <td><%= quiz.description %></td>
-        <td><%= quiz.language_learning %></td>
-        <td><%= quiz.difficulty_level %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= button_to 'Create New Quiz', new_quiz_path(locale: I18n.locale), method: :get, class: "new_quiz" %>
+  <%= react_component("table/TableWithLinks", { quizzes: @specific_users_quizzes, title: 'Created Quizzes Stats', columnContentTypes: ['text','text','text','numeric','numeric'], headings: ['Title','Language','Difficulty Level','Total Number of Attempts','Average Score'], url: 'https://dev-degree-rails-project-msitkovets.myshopify.io/quizzes'}) %>
+  <%= react_component("table/Table", { rows: @specific_users_stats, title: 'Played Quizzes Stats', columnContentTypes: ['text','text','text','numeric','numeric'], headings: ['Title','Language','Difficulty Level','Total Number of Attempts','Average Score']}) %>
 <% end %>
+
+<%= react_component("PolarisButton", { text: 'Create New Quiz', url: 'https://dev-degree-rails-project-msitkovets.myshopify.io/quizzes/new'}) %>
+
 

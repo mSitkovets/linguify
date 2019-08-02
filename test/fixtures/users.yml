@@ -4,13 +4,16 @@ one:
   username: dave
   password_digest: <%= BCrypt::Password.create('secret') %>
   email: maria@gmail.com
+  user_type: 1
 
 two:
   username: susannah
   password_digest: <%= BCrypt::Password.create('secret') %>
   email: person@yahoo.com
+  user_type: 0
 
 three:
   username: bob
   password_digest: <%= BCrypt::Password.create('secret') %>
   email: pe@yahoo.com
+  user_type: 0

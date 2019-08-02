@@ -2,54 +2,8 @@
   <aside id="notice"><%= notice %></aside>
 <% end %>
 
-<h1>Comments</h1>
+<%= react_component("table/TableWithLinks", { quizzes: @comments, title: 'Comments', columnContentTypes: ['text', 'numeric','numeric'], headings: ['Comment', 'User ID', 'Quiz ID'], url: 'https://dev-degree-rails-project-msitkovets.myshopify.io/comments'}) %>
+<%= react_component("PolarisButton", { text: 'Create New Comment', url: 'https://dev-degree-rails-project-msitkovets.myshopify.io/comments/new'}) %>
+<%= react_component("table/Table", { rows: @comments_including_fun, title: 'Comments Including the Word Fun', columnContentTypes: ['text','text'], headings: ['Username','Comment']}) %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Body</th>
-      <th>User</th>
-      <th>Quiz</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments.each do |comment| %>
-      <tr>
-        <td><%= comment.body %></td>
-        <td><%= comment.user_id %></td>
-        <td><%= comment.quiz_id %></td>
-        <td><%= link_to 'Show', comment %></td>
-        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
-        <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= button_to 'New Comment', new_comment_path %>
-
-<h1>Comments Including the Word 'Fun'</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Username</th>
-      <th>Comment</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @comments_including_fun.each do |comment| %>
-      <tr>
-        <td><%= comment[1] %></td>
-        <td><%= comment[0] %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
 

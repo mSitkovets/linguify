@@ -2,6 +2,7 @@ class LineItemsController < ApplicationController
   include CurrentList
   before_action :set_list, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  skip_before_action :verify_authenticity_token
 
   # GET /line_items
   # GET /line_items.json
@@ -26,13 +27,16 @@ class LineItemsController < ApplicationController
   # POST /line_items
   # POST /line_items.json
   def create
+    
     @quiz = Quiz.find(params[:quiz_id])
+    @quiz.saved = true
+    @quiz.save!
     @line_item = @list.add_quiz(@quiz)
 
     respond_to do |format|
       if @line_item.save
-        format.html { redirect_to explore_index_url }
         format.js { @current_item = @line_item }
+        format.html { redirect_to explore_index_url }
         format.json { render :show, status: :created, location: @line_item }
       else
         format.html { render :new }
@@ -59,6 +63,8 @@ class LineItemsController < ApplicationController
   # DELETE /line_items/1.json
   def destroy
     @line_item.destroy
+    @line_item.quiz.saved = false
+    @line_item.quiz.save!
     respond_to do |format|
       format.html { redirect_to explore_index_url, notice: 'Quiz was successfully destroyed.' }
       format.json { head :no_content }

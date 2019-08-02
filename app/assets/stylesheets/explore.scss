@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .explore {
-  max-width: 80em;
+  width: 100%;
   ul.catalog {
     border-top: solid 0.250em;
     list-style: none;
@@ -42,7 +42,6 @@
   }
   .Polaris-Button--primary {
     margin-top: 2%;
-    margin-right: 2%;
   }
 }   
 

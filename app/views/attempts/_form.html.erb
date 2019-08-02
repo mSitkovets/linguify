@@ -1,13 +1,16 @@
 <%= form_with(model: [quiz, attempt], local: true, method: :patch) do |form| %>
 
-  <h1><%= @attempt.quiz.title %></h1>
+  <h1><strong><%= @attempt.quiz.title %></strong></h1>
   <% counter = 1 %>
   <% @attempt.quiz.questions.each do |question| %>
-    <h2>Q<%=counter%>: <%= question.question%></h2>
+    <h2><strong>Q<%=counter%>: <%= question.question%></strong></h2>
     <% @answers[0].each do |answer| %>
        <div style= "display:flex; flex-direction: row;"> 
-       <%= radio_button_tag("answers[Q#{counter}]".to_sym, answer[0]) %>
-       <%= label_tag(:answer, answer[0]) %>
+        <!--
+        <input type = "radio" name="answers" value=<%=answer[0]%>> <%=answer[0]%></input>  
+        -->
+        <%= radio_button("question[#{question.id}]", "answer", answer[0]) %>
+        <%= label_tag(:answer, answer[0]) %>
        </div>
     <% end %>
     <% counter += 1 %>

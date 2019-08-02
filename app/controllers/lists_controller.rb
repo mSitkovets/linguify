@@ -55,6 +55,10 @@ class ListsController < ApplicationController
   # DELETE /lists/1
   # DELETE /lists/1.json
   def destroy
+    @list.line_items.each do |line_item|
+      line_item.quiz.saved = false
+      line_item.quiz.save!
+    end
     @list.destroy if @list.id == session[:list_id]
     session[:list_id] = nil
     respond_to do |format|

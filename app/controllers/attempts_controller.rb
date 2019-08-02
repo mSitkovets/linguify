@@ -4,7 +4,7 @@ class AttemptsController < ApplicationController
   # GET /attempts
   # GET /attempts.json
   def index
-    @attempts = Attempt.all
+    @recent_attempts = Attempt.joins(:quiz).pluck('quizzes.title', :user_id, :score).last(10)
     @average_score_per_user = Attempt.select(:user_id).joins("INNER JOIN users ON attempts.user_id = users.id").group(:username).average(:score).sort_by{|username, avg_score| avg_score}.reverse
     @average_score_per_quiz = Attempt.select(:title).joins("INNER JOIN quizzes ON quizzes.id = attempts.quiz_id").group(:title).average(:score).sort_by{|title, avg_score| avg_score}.reverse.first(3)
   end
@@ -36,11 +36,19 @@ class AttemptsController < ApplicationController
   # PATCH/PUT /attempts/1.json
   def update
     respond_to do |format|
-      answer = finished_attempt_params
-      score = Attempt.calcScore(answer, @attempt.quiz.questions)
+      # answer = finished_attempt_params
+      # score = Attempt.calcScore(answer, @attempt.quiz.questions)
+      
+      count = 1
+      @user_answers = params
+      @user_answers["question"].each do |question|
+        Answer.create(attempt_id: @user_answers["id"], question_id: count, user_answer: question[1]["answer"])
+      end
+      score = Attempt.calcScore(@attempt.answers, @attempt.quiz.questions)
+      
 
       if @attempt.update(score: score)
-        format.html { redirect_to quiz_attempt_url, notice: 'Your quiz results:' }
+        format.html { redirect_to quiz_attempt_url }
       else
         format.html { render :edit }
         format.json { render json: @attempt.errors, status: :unprocessable_entity }
@@ -70,6 +78,8 @@ class AttemptsController < ApplicationController
     end
 
     def finished_attempt_params
-      params.permit(answers: {})
+      # params.permit(answers: {})
+      params.permit("answers")
+      # binding.pry
     end
 end

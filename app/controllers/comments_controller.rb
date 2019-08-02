@@ -4,8 +4,8 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
-    @comments_including_fun =  Comment.joins(:user).where("body LIKE '%fun%'").pluck(:body, :username)
+    @comments = Comment.all.pluck(:body, :user_id, :quiz_id, :id)
+    @comments_including_fun =  Comment.joins(:user).where("body LIKE '%fun%'").pluck(:username, :body)
   end
 
   # GET /comments/1
