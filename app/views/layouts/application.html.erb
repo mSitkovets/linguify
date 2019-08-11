@@ -21,10 +21,12 @@
         <%= form_tag explore_index_path, class: 'locale' do %> 
           <a href = "/login">Login</a>
           <a href = "/users/new">Create Account</a>
+          <!--
           <%= select_tag 'set_locale',
             options_for_select(LANGUAGES, I18n.locale.to_s),
             onchange: 'this.form.submit()' %>
           <%= submit_tag 'submit', id: "submit_locale_change" %>
+          -->
         <% end %> 
        
       </aside>

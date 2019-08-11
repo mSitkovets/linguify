@@ -6,9 +6,9 @@ class QuizzesController < ApplicationController
   # GET /quizzes.json
   def index
     @quizzes = Quiz.all
-    @quizzes_per_language = Quiz.group(:language_learning).pluck(:language_learning, "count(quizzes.language_learning)")
-    @specific_users_quizzes = Quiz.where(:user_id == User.find(session[:user_id])).joins(:attempts).group(:quiz_id).pluck(:title, :language_learning, :difficulty_level, "count(quizzes.id)", "avg(attempts.score)",:quiz_id)
-    @specific_users_stats = Quiz.joins(:attempts).where("attempts.user_id=?", "#{session[:user_id]}").group(:quiz_id).pluck(:title, :language_learning, :difficulty_level, "count(quizzes.id)", "avg(attempts.score)")
+    @quizzes_per_language = Quiz.group(:language_learning).pluck(:language_learning, Arel.sql("count(quizzes.language_learning)"))
+    @specific_users_quizzes = Quiz.where(:user_id == User.find(session[:user_id])).joins(:attempts).group(:quiz_id).pluck(:title, :language_learning, :difficulty_level, Arel.sql("count(quizzes.id)"), Arel.sql("avg(attempts.score)"),:quiz_id)
+    @specific_users_stats = Quiz.joins(:attempts).where("attempts.user_id=?", "#{session[:user_id]}").group(:quiz_id).pluck(:title, :language_learning, :difficulty_level, Arel.sql("count(quizzes.id)"), Arel.sql("avg(attempts.score)"))
   end
   # GET /quizzes/1
   # GET /quizzes/1.json

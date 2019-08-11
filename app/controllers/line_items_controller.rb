@@ -1,5 +1,6 @@
 class LineItemsController < ApplicationController
   include CurrentList
+  skip_before_action :authorize, only: :create
   before_action :set_list, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
   skip_before_action :verify_authenticity_token

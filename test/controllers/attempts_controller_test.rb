@@ -15,18 +15,13 @@ class AttemptsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should show attempt" do
-    get quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id)
-    assert_response :success
-  end
-
   test "should get edit" do
     get edit_quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id)
     assert_response :success
   end
 
   test "should update attempt" do
-    patch quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id), params: { answers: {} }
+    patch quiz_attempt_url(id: @attempt.id, quiz_id: @attempt.quiz_id), params: { question: { "2": { answer: "a" } } }
     assert_redirected_to quiz_attempt_url
   end
 

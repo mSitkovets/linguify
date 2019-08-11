@@ -9,11 +9,43 @@
 <% counter = 1 %>
   <% @attempt.quiz.questions.each do |question| %>
     <h2><strong>Q<%=counter%>: <%= question.question%></strong></h2>
-    <% question.answers.each do |answer| %>
-       <div style= "display:flex; flex-direction: row;"> 
-        
-       </div>
-    <% end %>
+      <% @user_answer = Answer.where(attempt_id: @attempt.id, question_id: question.id) %>
+        <% if @user_answer.last.user_answer == question.option_a %>
+          <div style= "display:flex; flex-direction: row; text-transform: lowercase; background-color: #FEAD9A;"> 
+            <%= radio_button_tag("question[#{question.id}]", "#{question.id}", @user_answer.last.user_answer == question.option_a, disabled: true) %>  
+            <%= label_tag("#{question.option_a}") %>
+          </div>
+        <% else %>
+          <div style= "display:flex; flex-direction: row; text-transform: lowercase;"> 
+            <%= radio_button_tag("question[#{question.id}]", "#{question.id}", @user_answer.last.user_answer == question.option_a, disabled: true) %>  
+            <%= label_tag("#{question.option_a}") %>
+          </div>
+        <% end %>
+        <% if @user_answer.last.user_answer == question.option_b %>
+          <div style= "display:flex; flex-direction: row; text-transform: lowercase; background-color: #FEAD9A;"> 
+            <%= radio_button_tag("question[#{question.id}]", "#{question.id}", @user_answer.last.user_answer == question.option_b, disabled: true) %>  
+            <%= label_tag("#{question.option_b}") %>
+          </div>
+        <% else %>
+        <div style= "display:flex; flex-direction: row; text-transform: lowercase;"> 
+            <%= radio_button_tag("question[#{question.id}]", "#{question.id}", @user_answer.last.user_answer == question.option_b, disabled: true) %>  
+            <%= label_tag("#{question.option_b}") %>
+          </div>
+        <% end %>
+        <% if @user_answer.last.user_answer == question.option_c %>
+          <div style= "display:flex; flex-direction: row; text-transform: lowercase; background-color: #FEAD9A;"> 
+            <%= radio_button_tag("question[#{question.id}]", "#{question.id}", @user_answer.last.user_answer == question.option_c, disabled: true) %>  
+            <%= label_tag("#{question.option_c}") %>
+          </div>
+        <% else %>
+          <div style= "display:flex; flex-direction: row; text-transform: lowercase;"> 
+            <%= radio_button_tag("question[#{question.id}]", "#{question.id}", @user_answer.last.user_answer == question.option_c, disabled: true) %>  
+            <%= label_tag("#{question.option_c}") %>
+          </div>
+        <% end %>
+        <div style= "display:flex; flex-direction: row; text-transform: lowercase; background-color: #BBE5B3;"> 
+          <%= radio_button_tag("question[#{question.id}]", "#{question.id}", @user_answer.last.user_answer == question.answer, disabled: true) %>  
+          <%= label_tag("#{question.answer}") %>
+        </div>
     <% counter += 1 %>
-   
   <% end %>

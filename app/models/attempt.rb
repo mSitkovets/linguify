@@ -6,8 +6,8 @@ class Attempt < ApplicationRecord
   has_many :answers, dependent: :destroy
 
   def self.calcScore(user_answers, questions)
-    i = 1
     score = 0
+    count = 0
     if(user_answers.empty?)
       score = 0
     else
@@ -16,13 +16,15 @@ class Attempt < ApplicationRecord
         #  score+=1
         # end
         # binding.pry
-        if (question.answer == user_answers.values[0])
-          
-          score+=1
-         end
-        i+=1
+        # count = 0
+        # while(count < user_answers.length)
+          if (question.id == user_answers[count].question_id && question.answer == user_answers[count].user_answer)
+            score+=1
+          end
+          count+=1
+        # end
      end
-     score = ((score / Float(i-1)) * 100).to_i
+     score = ((score / Float(questions.length)) * 100).to_i
     end  
     score
   end

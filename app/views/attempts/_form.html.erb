@@ -6,9 +6,6 @@
     <h2><strong>Q<%=counter%>: <%= question.question%></strong></h2>
     <% @answers[0].each do |answer| %>
        <div style= "display:flex; flex-direction: row;"> 
-        <!--
-        <input type = "radio" name="answers" value=<%=answer[0]%>> <%=answer[0]%></input>  
-        -->
         <%= radio_button("question[#{question.id}]", "answer", answer[0]) %>
         <%= label_tag(:answer, answer[0]) %>
        </div>
