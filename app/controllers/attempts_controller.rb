@@ -36,17 +36,12 @@ class AttemptsController < ApplicationController
   # PATCH/PUT /attempts/1.json
   def update
     respond_to do |format|
-      # answer = finished_attempt_params
-      # score = Attempt.calcScore(answer, @attempt.quiz.questions)
-      
       @user_answers = params
       count = 0
-      # binding.pry
       @user_answers["question"].each do |question|
         Answer.create(attempt_id: @user_answers["id"], question_id: question[0], user_answer: question[1]["answer"])
         count += 1
       end
-      # binding.pry
       if count != @attempt.quiz.questions.length
         format.html { redirect_to new_quiz_attempt_url, notice: 'Please fill out all the questions.' }
       else
@@ -85,8 +80,6 @@ class AttemptsController < ApplicationController
     end
 
     def finished_attempt_params
-      # params.permit(answers: {})
       params.permit("answers")
-      # binding.pry
     end
 end

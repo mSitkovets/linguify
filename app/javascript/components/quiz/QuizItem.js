@@ -18,7 +18,6 @@ class QuizItem extends React.Component {
     }
   }
   addLineItem() {
-    console.log("This quiz is already in your list.", this.props);
     fetch(
       `https://dev-degree-rails-project-msitkovets.myshopify.io/line_items?quiz_id=${
         this.props.quiz.id
@@ -31,8 +30,6 @@ class QuizItem extends React.Component {
         window.location.reload();
       }
     });
-
-    // window.location.reload(this.props.quiz.id);
   }
 
   render() {

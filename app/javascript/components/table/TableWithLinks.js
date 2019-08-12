@@ -14,7 +14,6 @@ class TableWithLinks extends React.Component {
   }
   render() {
     this.props.quizzes.forEach(element => {
-      console.log(element[5]);
       const id = element[element.length - 1];
       element[element.length - 1] = (
         <Link url={`${this.props.url}/${id}`}>Show</Link>

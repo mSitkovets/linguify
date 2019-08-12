@@ -18,9 +18,6 @@ Rails.application.routes.draw do
   resources :quizzes do
     get :who_created, on: :member
   end
-  resources :quizzes do 
-    get :search
-  end
 
   scope '(:locale)' do 
     resources :quizzes 

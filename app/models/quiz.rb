@@ -29,7 +29,7 @@ class Quiz < ApplicationRecord
 
   #hook method
   private
-    # ensure that there are no line items referencing this product
+    # ensure that there are no line items referencing this quiz
     def ensure_not_referenced_by_any_line_item 
       unless line_items.empty?
         errors.add(:base, 'Line Items present')

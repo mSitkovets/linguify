@@ -18,7 +18,6 @@ class QuizList extends React.Component {
     });
   }
   render() {
-    console.log(this.props);
     const quizzes = this.props.quizzes.map((quiz, key) => (
       <QuizItem
         displayWarningBanner={this.displayWarningBanner}
@@ -26,11 +25,9 @@ class QuizList extends React.Component {
         key={key}
       />
     ));
-
     const warningBanner = this.state.addWarning ? (
       <Banner title="This quiz is already in your list." status="warning" />
     ) : null;
-
     return (
       <AppProvider>
         <div>
