@@ -1,37 +1,5 @@
 <% if notice %>
   <aside id="notice"><%= notice %></aside>
 <% end %>
-<!--
-<h1><%= t('.title_html') %></h1>
-  <ul class="catalog">
-    <% cache @quizzes do %>
-      <% @quizzes.each do |quiz| %>
-        <% cache quiz do %>
-          <li>
-            <h2><%= quiz.title %></h2>
-            <p>
-              <%= sanitize(quiz.description) %> </p>
-            <div class="lang_learn"> 
-              <p><b>Learn: </b><%= quiz.language_learning %></p>
-            </div> 
-            <div class="instr_lang"> 
-              <p><b>From: </b><%= quiz.instruction_language %></p>
-            </div> 
-            <div class="difficulty"> 
-              <p><b>Level: </b><%= quiz.difficulty_level %></p>
-            </div> 
-            <div class="button">
-              <%= button_to t('.play_html'), new_quiz_attempt_path(quiz_id: quiz.id), method: :get, class: "new_quiz" %>
-            </div>
-            <div class="button">
-            <%= button_to t('.add_html'), line_items_path(quiz_id: quiz, locale: I18n.locale),remote: true %>
-            </div>
-          </li>
-      <% end %>
-    <% end %> 
-  <% end %>
-</ul>
--->
-
 <%= react_component("quiz/QuizList", { quizzes: @quizzes }) %>
 

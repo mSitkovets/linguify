@@ -68,5 +68,3 @@ QuizItem.propTypes = {
   quiz: PropTypes.object
 };
 export default QuizItem;
-
-// , onClick: addLineItem()}
